@@ -15,7 +15,7 @@ export function PageHero({
     <div className="min-h-screen bg-white">
       <Header />
       <main className="px-6 py-10 xl:px-10 xl:pt-12 xl:pb-7">
-        <h1 className="max-w-[760px] text-[32px] leading-[1.05] font-extrabold tracking-[-0.8px] text-[#061257] xl:text-[44px]">
+        <h1 className="max-w-[760px] text-[32px] leading-[1.05] font-extrabold text-ink xl:text-[44px]">
           {title}
         </h1>
         <p className="mt-3 max-w-[640px] text-[18px]">{body}</p>

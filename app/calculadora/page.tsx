@@ -21,15 +21,15 @@ export default function CalculatorPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="m-4 grid items-center gap-6 rounded-[28px] bg-[#0A65FC] p-6 text-white xl:grid-cols-2 xl:p-9">
+      <main className="m-4 grid items-center gap-6 rounded-[28px] bg-ink p-6 text-white xl:grid-cols-2 xl:p-9">
         <div>
-          <h1 className="text-[36px] leading-none font-extrabold tracking-[-1px] xl:text-[46px]">
+          <h1 className="text-h1 leading-none font-extrabold xl:text-[46px]">
             Calculadora de renda extra do FechoApp
           </h1>
-          <p className="mt-3.5 text-[18px]">Quer monetizar suas habilidades? Estime quanto você pode ganhar.</p>
+          <p className="mt-3.5 text-lg">Quer monetizar suas habilidades? Estime quanto você pode ganhar.</p>
         </div>
         <form
-          className="rounded-[18px] bg-white p-[22px] text-[#061257]"
+          className="rounded-[18px] bg-white p-[22px] text-ink"
           onSubmit={(event) => {
             event.preventDefault();
             setResult(monthly);
@@ -47,7 +47,7 @@ export default function CalculatorPage() {
               setSkill(event.target.value);
               setResult(null);
             }}
-            className="mt-1.5 w-full rounded-lg bg-[#F3F3F7] px-2.5 py-2.5 text-[#384179]"
+            className="mt-1.5 w-full rounded-lg bg-surface px-2.5 py-2.5 text-text"
           >
             <option value="">Selecione sua habilidade/categoria</option>
             {earningSkills.map(([id, label]) => (
@@ -60,7 +60,7 @@ export default function CalculatorPage() {
           <div className="mt-1.5 flex flex-wrap gap-2">
             <input
               aria-label="Quantidade de tarefas"
-              className="w-16 rounded-lg bg-[#F3F3F7] px-3.5 py-2"
+              className="w-16 rounded-lg bg-surface px-3.5 py-2"
               type="number"
               min={1}
               max={40}
@@ -70,10 +70,10 @@ export default function CalculatorPage() {
                 setResult(null);
               }}
             />
-            <span className="rounded-lg bg-[#F3F3F7] px-3.5 py-2">tarefas por</span>
+            <span className="rounded-lg bg-surface px-3.5 py-2">tarefas por</span>
             <select
               aria-label="Período"
-              className="rounded-lg bg-[#F3F3F7] px-3.5 py-2"
+              className="rounded-lg bg-surface px-3.5 py-2"
               value={period}
               onChange={(event) => {
                 setPeriod(event.target.value as "semana" | "mês");

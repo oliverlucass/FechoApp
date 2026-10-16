@@ -3,7 +3,7 @@ import { footerColumns } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="bg-[#061257] px-7 pt-7 pb-[18px] text-[#C9D0EA]">
+    <footer className="bg-ink px-7 pt-7 pb-[18px] text-line">
       <div className="grid grid-cols-2 gap-4 xl:grid-cols-5">
         {footerColumns.map(([title, links]) => (
           <div key={title}>
