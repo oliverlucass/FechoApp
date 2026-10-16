@@ -36,7 +36,7 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
         <div className="hidden grid-cols-[300px_1fr] gap-3 p-3 xl:grid">
           <div>
             {(lease ? railTasks : browseTasks).map((item) => (
-              <TaskCard key={item.slug} href={`/tarefas/${item.slug}`} {...item} />
+              <TaskCard key={item.slug} href={`/tarefas/${item.slug}`} {...item} selected={item.slug === task.slug} />
             ))}
           </div>
           <article className="rounded-card bg-white p-[18px]">
@@ -67,7 +67,7 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
                 <div className="mt-2">Publicado por {task.clientName}</div>
                 <div>Local · {task.location} · Ver mapa</div>
                 <div>
-                  {task.when} · {task.time}
+                  {task.time && task.time !== task.when ? `${task.when} · ${task.time}` : task.when}
                 </div>
               </>
             ) : (
