@@ -197,3 +197,7 @@
     letter-spacing: normal;
   }
 }
+
+.maplibregl-ctrl-group {
+  box-shadow: var(--shadow-control);
+}

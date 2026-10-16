@@ -24,6 +24,7 @@ export function Pill({
   className,
   type = "button",
   onClick,
+  disabled = false,
 }: {
   href?: string;
   tone?: keyof typeof tones;
@@ -33,6 +34,7 @@ export function Pill({
   className?: string;
   type?: "button" | "submit";
   onClick?: () => void;
+  disabled?: boolean;
 }) {
   const classes = cn(
     buttonVariants({ variant: "default", size: "lg" }),
@@ -52,7 +54,7 @@ export function Pill({
   }
 
   return (
-    <button type={type} className={classes} onClick={onClick}>
+    <button type={type} className={classes} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

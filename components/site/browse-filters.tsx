@@ -13,7 +13,7 @@ const filters = [
   { id: "ordenar", label: "Ordenar", options: ["Mais recentes", "Menor preço", "Maior preço"] },
 ];
 
-export function BrowseFilters() {
+export function BrowseFilters({ onQueryChange }: { onQueryChange?: (value: string) => void }) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState<string | null>(null);
   const [picked, setPicked] = useState<Record<string, string>>({});
@@ -25,7 +25,10 @@ export function BrowseFilters() {
           <span className="sr-only">Buscar uma tarefa</span>
           <input
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              onQueryChange?.(event.target.value);
+            }}
             placeholder="Buscar uma tarefa"
             className="h-8 w-[200px] rounded-search bg-surface pr-8 pl-3 text-sm font-light text-text placeholder:text-muted"
           />
