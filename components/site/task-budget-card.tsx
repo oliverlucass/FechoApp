@@ -16,7 +16,7 @@ export function TaskBudgetCard({ price, status }: { price: string; status: TaskS
 
   return (
     <aside className="rounded-card border border-line bg-white p-3">
-      <div className="text-caps font-bold tracking-[0.6px] text-muted uppercase">Orçamento da tarefa</div>
+      <div className="text-caps font-bold tracking-caps text-muted uppercase">Orçamento da tarefa</div>
       <div className="font-heading text-display leading-none font-extrabold text-ink">{price}</div>
       {locked ? (
         <Pill block className="mt-3" disabled>

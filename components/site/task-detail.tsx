@@ -42,7 +42,7 @@ export function TaskDetail({ task, rail }: { task: Task; rail: Task[] }) {
           <TaskCard key={item.slug} href={`/tarefas/${item.slug}`} {...item} selected={item.slug === task.slug} />
         ))}
       </aside>
-      <article className="min-h-0 overflow-y-auto px-4 py-4">
+      <article className="min-h-0 overflow-y-auto bg-white px-4 py-4">
         <div className="mb-3 flex items-center justify-between gap-3">
           <Link href="/tarefas" className="inline-flex items-center gap-1 text-sm text-link">
             <ChevronLeft className="size-4" aria-hidden="true" />

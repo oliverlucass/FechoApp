@@ -13,7 +13,7 @@ export function FollowButton() {
       aria-pressed={following}
       onClick={() => setFollowing((value) => !value)}
       className={cn(
-        "inline-flex h-7 items-center gap-1 rounded-pill bg-surface px-2.5 text-caps font-bold tracking-[0.6px] text-text uppercase",
+        "inline-flex h-7 items-center gap-1 rounded-pill bg-surface px-2.5 text-caps font-bold tracking-caps text-text uppercase",
         following && "bg-action-tint text-ink",
       )}
     >
