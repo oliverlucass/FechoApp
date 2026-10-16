@@ -67,7 +67,7 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
                 <div className="mt-2">Publicado por {task.clientName}</div>
                 <div>Local · {task.location} · Ver mapa</div>
                 <div>
-                  {task.when} · {task.time}
+                  {task.time && task.time !== task.when ? `${task.when} · ${task.time}` : task.when}
                 </div>
               </>
             ) : (

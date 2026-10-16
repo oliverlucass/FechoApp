@@ -50,7 +50,7 @@ export function TaskCard({
       )}
     >
       <div className="flex items-start justify-between gap-3 pr-1">
-        <h3 className="line-clamp-2 text-base font-normal text-ink">{title}</h3>
+        <h3 className="line-clamp-2 font-sans text-base font-normal text-ink">{title}</h3>
         <div className="text-lg font-bold whitespace-nowrap text-ink">{price}</div>
       </div>
       <div className="mt-1.5 flex items-center gap-1.5 text-xs text-muted">
@@ -61,7 +61,7 @@ export function TaskCard({
         <Calendar className="size-3.5 shrink-0" aria-hidden="true" />
         <span>{when}</span>
       </div>
-      {time ? (
+      {time && time.trim() !== when.trim() ? (
         <div className="mt-1.5 flex items-center gap-1.5 text-xs text-muted">
           <Clock className="size-3.5 shrink-0" aria-hidden="true" />
           <span>{time}</span>
@@ -71,7 +71,7 @@ export function TaskCard({
         <span className={statusClass[status]}>{statusLabel[status]}</span>
         {offerCount > 0 ? <span className="text-xs font-normal text-muted"> · {offers}</span> : null}
       </div>
-      <span className="absolute right-4 bottom-4 inline-flex size-9 items-center justify-center rounded-full bg-action-tint text-[13px] font-bold text-ink">
+      <span className="absolute right-4 bottom-4 inline-flex size-9 items-center justify-center rounded-full bg-action-tint text-fine font-bold text-ink">
         {poster}
       </span>
     </Link>
