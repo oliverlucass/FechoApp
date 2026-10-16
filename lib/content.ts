@@ -483,16 +483,16 @@ export function findTask(slug: string) {
 }
 
 export const categories = [
-  ["Montagem de móveis", "Montagem e desmontagem de móveis prontos"],
-  ["Entregas", "Entregas no mesmo dia e coletas"],
-  ["Jardinagem e paisagismo", "Corte, capina e organização"],
-  ["Pintura", "Pintura de paredes internas e externas"],
-  ["Faz-tudo", "Ajuda com a manutenção da casa"],
-  ["Negócios e administração", "Ajuda com planilhas e rotinas do dia a dia"],
-  ["Marketing e design", "Ajuda com site e peças simples"],
-  ["Outra coisa", "Instalação de quadros e pequenos reparos"],
-  ["Mudanças", "Embalagem, proteção, transporte e mais"],
-  ["Limpeza residencial", "Limpar, passar pano e organizar a casa"],
+  ["Montagem de móveis", "Montagem e desmontagem de móveis prontos", "/ilustracoes/montagem.svg"],
+  ["Entregas", "Entregas no mesmo dia e coletas", "/ilustracoes/entrega.svg"],
+  ["Jardinagem e paisagismo", "Corte, capina e organização", "/ilustracoes/jardim.svg"],
+  ["Pintura", "Pintura de paredes internas e externas", "/ilustracoes/pintura.svg"],
+  ["Faz-tudo", "Ajuda com a manutenção da casa", "/ilustracoes/faz-tudo.svg"],
+  ["Negócios e administração", "Ajuda com planilhas e rotinas do dia a dia", "/ilustracoes/negocios.svg"],
+  ["Marketing e design", "Ajuda com site e peças simples", "/ilustracoes/design.svg"],
+  ["Outra coisa", "Instalação de quadros e pequenos reparos", "/ilustracoes/faz-tudo.svg"],
+  ["Mudanças", "Embalagem, proteção, transporte e mais", "/ilustracoes/mudanca.svg"],
+  ["Limpeza residencial", "Limpar, passar pano e organizar a casa", "/ilustracoes/limpeza.svg"],
 ] as const;
 
 export const homeJobs = [
@@ -506,7 +506,43 @@ export const homeJobs = [
   ["MUDANÇAS", "Mudança a 1 km na mesma rua", "R$ 350", "/tarefas/mudanca-1km"],
 ] as const;
 
-export const homeTabs = ["Mudança", "Manutenção da casa", "Abrindo um negócio", "Festas", "Algo diferente"];
+export const homeTabs = ["Mudança", "Manutenção da casa", "Abrindo um negócio", "Festas", "Algo diferente"] as const;
+
+export type HomeReviewCard = {
+  tab: (typeof homeTabs)[number];
+  kind: string;
+  title: string;
+  price: string;
+  href: string;
+  rating: string;
+  review: string;
+  photo: string;
+  name: string;
+};
+
+export const homeReviews: HomeReviewCard[] = [
+  { tab: "Mudança", kind: "Mudanças", title: "Mudança hoje", price: "R$ 280", href: "/tarefas/mudanca-hoje", rating: "5,0", review: "Equipe cuidadosa e no horário combinado.", photo: "/ilustracoes/mudanca.svg", name: "Paulo G." },
+  { tab: "Mudança", kind: "Mudanças", title: "Mudança urgente", price: "R$ 520", href: "/tarefas/mudanca-urgente", rating: "4,9", review: "Combinamos os detalhes sem complicação.", photo: "/ilustracoes/entrega.svg", name: "Ana P." },
+  { tab: "Mudança", kind: "Mudanças", title: "Ajuda para mudar de casa", price: "R$ 400", href: "/tarefas/ajuda-mudanca", rating: "5,0", review: "Cuidaram dos móveis na escada.", photo: "/ilustracoes/montagem.svg", name: "Rafael F." },
+  { tab: "Manutenção da casa", kind: "Faz-tudo", title: "Trocar resistência do chuveiro", price: "R$ 120", href: "/tarefas/chuveiro", rating: "5,0", review: "Resolveu no período da manhã.", photo: "/ilustracoes/faz-tudo.svg", name: "Marina A." },
+  { tab: "Manutenção da casa", kind: "Pintura", title: "Pintar sala e corredor", price: "R$ 900", href: "/tarefas/pintar-sala", rating: "4,8", review: "A sala ficou uniforme e sem respingos.", photo: "/ilustracoes/pintura.svg", name: "Bruno L." },
+  { tab: "Manutenção da casa", kind: "Montagem", title: "Montar guarda-roupa 6 portas", price: "R$ 250", href: "/tarefas/guarda-roupa", rating: "5,0", review: "Montou tudo e levou as embalagens.", photo: "/ilustracoes/montagem.svg", name: "Rafael F." },
+  { tab: "Abrindo um negócio", kind: "Negócios", title: "Ajuda com tarefas básicas de suporte online", price: "R$ 200", href: "/tarefas/suporte-online", rating: "4,9", review: "A planilha ficou fácil de acompanhar.", photo: "/ilustracoes/negocios.svg", name: "Paulo G." },
+  { tab: "Abrindo um negócio", kind: "Negócios", title: "Ajuda para vender um lote de livros usados", price: "R$ 80", href: "/tarefas/livros-usados", rating: "5,0", review: "Os anúncios saíram no mesmo dia.", photo: "/ilustracoes/design.svg", name: "Camila S." },
+  { tab: "Festas", kind: "Entrega", title: "Entrega de sofá", price: "R$ 160", href: "/tarefas/entrega-de-sofa", rating: "4,9", review: "Chegou a tempo de organizar a sala.", photo: "/ilustracoes/entrega.svg", name: "Ana P." },
+  { tab: "Festas", kind: "Limpeza", title: "Limpeza de fim de contrato", price: "R$ 450", href: "/tarefas/limpeza-fim-de-contrato", rating: "5,0", review: "A casa ficou pronta para a visita.", photo: "/ilustracoes/limpeza.svg", name: "Marina A." },
+  { tab: "Algo diferente", kind: "Design", title: "Consultoria de design de interiores", price: "R$ 500", href: "/tarefas/consultoria-de-interiores", rating: "4,9", review: "As sugestões couberam no orçamento.", photo: "/ilustracoes/design.svg", name: "Camila S." },
+  { tab: "Algo diferente", kind: "Negócios", title: "Tradução juramentada", price: "R$ 180", href: "/tarefas/traducao-juramentada", rating: "5,0", review: "O documento voltou ainda hoje.", photo: "/ilustracoes/negocios.svg", name: "Helena M." },
+];
+
+export const fechadorSpotlight = [
+  { slug: "marina-a", name: "Marina A.", rating: "4,9", reviews: "97 avaliações", completion: "98%", specialties: ["Limpeza", "Organização"], body: "Limpeza residencial e organização depois de mudança.", quote: "Serviço caprichado e no horário combinado.", photo: "/ilustracoes/limpeza.svg" },
+  { slug: "rafael-f", name: "Rafael F.", rating: "5,0", reviews: "64 avaliações", completion: "96%", specialties: ["Montagem", "Faz-tudo"], body: "Montagem de móveis prontos e pequenos reparos.", quote: "Montou o guarda-roupa e deixou o quarto limpo.", photo: "/ilustracoes/montagem.svg" },
+  { slug: "camila-s", name: "Camila S.", rating: "5,0", reviews: "41 avaliações", completion: "99%", specialties: ["Limpeza", "Faxina"], body: "Faxina e organização de apartamentos.", quote: "O apartamento ficou pronto no mesmo dia.", photo: "/ilustracoes/limpeza.svg" },
+  { slug: "bruno-l", name: "Bruno L.", rating: "4,8", reviews: "33 avaliações", completion: "94%", specialties: ["Pintura", "Jardinagem"], body: "Pintura interna e ajuda com jardinagem.", quote: "A pintura ficou uniforme, sem pressa malfeita.", photo: "/ilustracoes/pintura.svg" },
+  { slug: "ana-p", name: "Ana P.", rating: "5,0", reviews: "28 avaliações", completion: "97%", specialties: ["Entrega", "Coleta"], body: "Entregas e coletas no mesmo dia.", quote: "Avisou o horário e entregou sem atraso.", photo: "/ilustracoes/entrega.svg" },
+  { slug: "paulo-g", name: "Paulo G.", rating: "4,9", reviews: "22 avaliações", completion: "95%", specialties: ["Mudanças", "Negócios"], body: "Mudanças e planilhas simples.", quote: "Ajudou a carregar e ainda organizou a lista.", photo: "/ilustracoes/mudanca.svg" },
+];
 
 export const menuColumns = [
   ["Contadores", "Administração", "Ajustes", "Eletrodomésticos", "Montagem", "Eletricistas automotivos", "Confeiteiros", "Barbeiros"],
