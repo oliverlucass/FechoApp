@@ -9,17 +9,17 @@ const filters = ["Categoria", "30 mi Ashburn VA 20149 e remoto", "Qualquer preç
 
 export default function BrowsePage() {
   return (
-    <div className="min-h-screen bg-[#F3F3F7]">
+    <div className="min-h-screen bg-surface">
       <div className="hidden xl:block">
         <Header />
       </div>
       <main>
         <div className="hidden items-center gap-2 px-4 py-2.5 xl:flex">
-          <span className="flex-1 rounded-[10px] border border-[#E4E7F0] bg-white px-3 py-2 text-[#384179]">
+          <span className="flex-1 rounded-search border border-line bg-white px-3 py-2 text-text">
             Buscar uma tarefa
           </span>
           {filters.map((item) => (
-            <span key={item} className="rounded-[10px] border border-[#E4E7F0] bg-white px-2.5 py-2 text-[13px]">
+            <span key={item} className="rounded-chip border border-line bg-white px-2.5 py-2 text-fine">
               {item}
             </span>
           ))}
@@ -30,7 +30,7 @@ export default function BrowsePage() {
               <TaskCard key={task.slug} href={`/tarefas/${task.slug}`} {...task} />
             ))}
           </div>
-          <div className="relative min-h-[460px] rounded-xl bg-[#E7EEF2]">
+          <div className="relative min-h-[460px] rounded-xl bg-line">
             {[
               [20, 30],
               [40, 50],
@@ -40,19 +40,19 @@ export default function BrowsePage() {
             ].map(([x, y], index) => (
               <div
                 key={index}
-                className="absolute flex size-[22px] items-center justify-center rounded-full bg-[#0A65FC] text-[11px] font-extrabold text-white"
+                className="absolute flex size-[22px] items-center justify-center rounded-full bg-ink text-caps font-extrabold text-action"
                 style={{ left: `${x}%`, top: `${y}%` }}
               >
                 A
               </div>
             ))}
-            <div className="absolute right-2.5 bottom-2.5 text-[11px]">MapLibre | OpenStreetMap</div>
+            <div className="absolute right-2.5 bottom-2.5 text-caps">MapLibre | OpenStreetMap</div>
           </div>
         </div>
 
         <div className="p-3 xl:hidden">
-          <h1 className="font-extrabold text-[#061257]">Você está vendo tarefas</h1>
-          <div className="mt-2 rounded-xl bg-white p-2.5">Buscar uma tarefa</div>
+          <h1 className="font-extrabold text-ink">Você está vendo tarefas</h1>
+          <div className="mt-2 rounded-search bg-white p-2.5">Buscar uma tarefa</div>
           <div className="mt-2 text-[12px]">30 mi Ashburn VA 20149 e remoto</div>
           <div className="mt-2">
             <TaskCard href="/tarefas/livros-betty-neel" title="Ajuda para vender um lote de livros da Betty Neel" meta="Remoto" price="$30" offers="Aberta" />

@@ -34,7 +34,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={active ? "text-[14px] font-bold text-[#0A65FC]" : "text-[14px] font-medium text-[#384179]"}
+                className={active ? "text-sm font-bold text-link" : "text-sm font-medium text-text"}
               >
                 {item.label}
               </Link>
@@ -42,13 +42,13 @@ export function Header() {
           })}
         </nav>
         <div className="flex-1" />
-        <Link href="/cadastrar" className="text-[#384179]">
+        <Link href="/cadastrar" className="text-text">
           Cadastrar
         </Link>
-        <Link href="/entrar" className="text-[#384179]">
+        <Link href="/entrar" className="text-text">
           Entrar
         </Link>
-        <Link href="/ganhar" className="rounded-full bg-[#F3F3F7] px-3.5 py-2 font-semibold text-[#384179]">
+        <Link href="/ganhar" className="rounded-full bg-surface px-3.5 py-2 font-semibold text-text">
           Seja um Fechador
         </Link>
       </div>
@@ -56,7 +56,7 @@ export function Header() {
       <div className="flex h-14 items-center px-3.5 xl:hidden">
         <button
           type="button"
-          className="text-[20px] text-[#061257]"
+          className="text-[20px] text-ink"
           aria-expanded={open}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           onClick={() => setOpen((value) => !value)}
@@ -68,26 +68,26 @@ export function Header() {
         </div>
         <Link
           href="/publicar"
-          className="inline-flex size-9 items-center justify-center rounded-full bg-[#0A65FC] text-lg font-extrabold text-white"
+          className="inline-flex size-9 items-center justify-center rounded-full border border-action-edge bg-action text-lg font-extrabold text-on-action hover:bg-action-hover"
           aria-label="Publicar tarefa"
         >
           +
         </Link>
       </div>
       {open ? (
-        <nav className="flex flex-col gap-3 border-t border-[#E4E7F0] px-4 py-4 xl:hidden">
+        <nav className="flex flex-col gap-3 border-t border-line px-4 py-4 xl:hidden">
           {links.map((item) => (
-            <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="font-semibold text-[#061257]">
+            <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="font-semibold text-ink">
               {item.label}
             </Link>
           ))}
-          <Link href="/cadastrar" onClick={() => setOpen(false)} className="text-[#384179]">
+          <Link href="/cadastrar" onClick={() => setOpen(false)} className="text-text">
             Cadastrar
           </Link>
-          <Link href="/entrar" onClick={() => setOpen(false)} className="text-[#384179]">
+          <Link href="/entrar" onClick={() => setOpen(false)} className="text-text">
             Entrar
           </Link>
-          <Link href="/ganhar" onClick={() => setOpen(false)} className="text-[#384179]">
+          <Link href="/ganhar" onClick={() => setOpen(false)} className="text-text">
             Seja um Fechador
           </Link>
         </nav>

@@ -16,14 +16,14 @@ export default function GiftPage() {
       <header className="flex h-16 items-center px-5 xl:px-7">
         <Logo />
         <div className="flex-1" />
-        <span className="rounded-[20px] bg-[#0A65FC] px-3 py-2 text-white">Carrinho</span>
-        <Link href="/" className="ml-3 text-[#0A65FC]">
+        <span className="rounded-full border border-action-edge bg-action px-3 py-2 text-on-action">Carrinho</span>
+        <Link href="/" className="ml-3 text-link">
           fechoapp.com →
         </Link>
       </header>
       <main className="grid gap-7 p-5 xl:grid-cols-2 xl:p-7">
         <div>
-          <h1 className="text-[32px] leading-none font-extrabold tracking-[-0.8px] text-[#061257] xl:text-[40px]">
+          <h1 className="text-[32px] leading-none font-extrabold text-ink xl:text-display">
             Escolha seu vale-presente FechoApp
           </h1>
           <h2 className="mt-4 font-bold">Para quem você quer enviar este vale-presente?</h2>
@@ -31,14 +31,14 @@ export default function GiftPage() {
             <button
               type="button"
               onClick={() => setWho("eu")}
-              className={`rounded-full px-4 py-2 ${who === "eu" ? "bg-[#061257] text-white" : "bg-[#F3F3F7]"}`}
+              className={`rounded-full px-4 py-2 ${who === "eu" ? "bg-ink text-white" : "bg-surface"}`}
             >
               Para mim
             </button>
             <button
               type="button"
               onClick={() => setWho("outro")}
-              className={`rounded-full px-4 py-2 ${who === "outro" ? "bg-[#061257] text-white" : "bg-[#F3F3F7]"}`}
+              className={`rounded-full px-4 py-2 ${who === "outro" ? "bg-ink text-white" : "bg-surface"}`}
             >
               Para outra pessoa
             </button>
@@ -50,7 +50,7 @@ export default function GiftPage() {
                 key={tile}
                 type="button"
                 onClick={() => setDesign(tile)}
-                className="flex h-[52px] items-center justify-center rounded-lg bg-[#0A65FC] px-1 text-center text-[11px] font-bold text-white"
+                className="flex h-[52px] items-center justify-center rounded-lg border border-action-edge bg-action px-1 text-center text-caps font-bold text-on-action"
               >
                 {tile}
               </button>
@@ -73,14 +73,14 @@ export default function GiftPage() {
                 key={value}
                 type="button"
                 onClick={() => setAmount(value)}
-                className={`rounded-lg border px-2 py-1.5 ${amount === value ? "border-[#0A65FC] text-[#0A65FC]" : "border-[#E4E7F0] text-[#061257]"}`}
+                className={`rounded-chip border px-2 py-1.5 ${amount === value ? "border-link text-link" : "border-line text-ink"}`}
               >
                 {value}
               </button>
             ))}
           </div>
         </div>
-        <div className="flex min-h-[240px] flex-col items-center justify-center rounded-3xl bg-[#0A65FC] text-white">
+        <div className="flex min-h-[240px] flex-col items-center justify-center rounded-3xl bg-ink text-white">
           <div className="text-[36px] font-extrabold">FechoApp</div>
           <div>{design}</div>
         </div>

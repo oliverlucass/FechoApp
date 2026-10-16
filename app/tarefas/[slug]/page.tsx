@@ -28,7 +28,7 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
   const lease = kind === "lease";
 
   return (
-    <div className="min-h-screen bg-[#F3F3F7]">
+    <div className="min-h-screen bg-surface">
       <div className="hidden xl:block">
         <Header />
       </div>
@@ -39,9 +39,9 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
               <TaskCard key={item.slug} href={`/tarefas/${item.slug}`} {...item} />
             ))}
           </div>
-          <article className="rounded-2xl bg-white p-[18px]">
+          <article className="rounded-card bg-white p-[18px]">
             {lease ? (
-              <div className="flex items-center justify-between gap-3 rounded-xl bg-[#F7F8FC] p-3">
+              <div className="flex items-center justify-between gap-3 rounded-card bg-surface p-3">
                 <span>Martha L. atribuiu Kati A. para ajudar nesta tarefa.</span>
                 <Pill href="/publicar">Publicar uma tarefa parecida</Pill>
               </div>
@@ -49,15 +49,15 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
             {lease ? (
               <div className="mt-3 flex gap-2 text-[12px]">
                 <span>ABERTA</span>
-                <span className="rounded-full bg-[#E5F8EC] px-2 py-0.5 font-bold text-[#128A4E]">ATRIBUÍDA</span>
+                <span className="rounded-full bg-success-tint px-2 py-0.5 font-bold text-success">ATRIBUÍDA</span>
                 <span>CONCLUÍDA</span>
               </div>
             ) : null}
             <div className="mt-2 flex items-start justify-between gap-4">
-              <h1 className="text-[32px] font-extrabold text-[#061257]">{task.title}</h1>
-              <div className="rounded-xl bg-[#F7F8FC] p-3 text-center">
-                <div className="text-[11px]">ORÇAMENTO DA TAREFA</div>
-                <div className="text-[28px] font-extrabold text-[#061257]">{task.price}</div>
+              <h1 className="text-[32px] font-extrabold text-ink">{task.title}</h1>
+              <div className="rounded-card bg-surface p-3 text-center">
+                <div className="text-caps">ORÇAMENTO DA TAREFA</div>
+                <div className="text-[28px] font-extrabold text-ink">{task.price}</div>
               </div>
             </div>
             {lease ? (
@@ -73,7 +73,7 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
             <p>{lease ? leaseTask.details : task.details}</p>
             {lease ? (
               <p className="mt-3 font-bold">
-                <Link href="/fechadores/kati-a" className="text-[#0A65FC]">
+                <Link href="/fechadores/kati-a" className="text-link">
                   Kati A.
                 </Link>{" "}
                 · 4,9 · 100%
@@ -83,7 +83,7 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
         </div>
 
         <article className="p-3.5 xl:hidden">
-          <h1 className="text-[24px] font-extrabold text-[#061257]">{task.title}</h1>
+          <h1 className="text-[24px] font-extrabold text-ink">{task.title}</h1>
           <div>
             {lease ? "Kensington VIC" : task.meta} · {task.price}
           </div>

@@ -14,13 +14,13 @@ export function TaskCard({
   offers: string;
 }) {
   return (
-    <Link href={href} className="mb-2.5 flex items-start justify-between gap-3 rounded-2xl bg-white p-3.5">
+    <Link href={href} className="mb-2.5 flex items-start justify-between gap-3 rounded-card bg-white p-3.5">
       <div>
-        <div className="font-extrabold text-[#061257]">{title}</div>
-        <div className="mt-1 text-[12px]">{meta}</div>
-        <div className="mt-1.5 font-bold text-[#0A65FC]">{offers}</div>
+        <div className="font-extrabold text-ink">{title}</div>
+        <div className="mt-1 text-xs">{meta}</div>
+        <div className="mt-1.5 font-bold text-link">{offers}</div>
       </div>
-      <div className="font-extrabold text-[#061257]">{price}</div>
+      <div className="font-extrabold text-ink">{price}</div>
     </Link>
   );
 }

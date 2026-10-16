@@ -35,7 +35,7 @@ export function AuthScreen({
           setNote(true);
         }}
       >
-        <h1 className="text-center text-[28px] font-extrabold text-[#061257]">{title}</h1>
+        <h1 className="text-center text-[28px] font-extrabold text-ink">{title}</h1>
         <Label htmlFor="email" className="sr-only">
           E-mail
         </Label>
@@ -44,9 +44,9 @@ export function AuthScreen({
           type="email"
           required
           placeholder="E-mail*"
-          className="mt-[18px] h-auto rounded-lg border-0 bg-[#F3F3F7] px-3 py-3 text-[#384179] placeholder:text-[#384179]"
+          className="mt-[18px] h-auto rounded-lg border-0 bg-surface px-3 py-3 text-text placeholder:text-text"
         />
-        <label className="mt-2.5 flex items-center gap-2 rounded-lg bg-[#F3F3F7] px-3 py-3">
+        <label className="mt-2.5 flex items-center gap-2 rounded-lg bg-surface px-3 py-3">
           <Checkbox checked={human} onCheckedChange={(checked) => setHuman(checked === true)} />
           <span>Confirme que você é humano</span>
         </label>
@@ -56,28 +56,28 @@ export function AuthScreen({
           </Pill>
         </div>
         {note ? (
-          <p className="mt-3 text-[13px]">
+          <p className="mt-3 text-fine">
             Esta tela não envia seus dados. O FechoApp aqui é só a interface, sem servidor de login.
           </p>
         ) : null}
         <div className="mt-3">
           {altPrompt}{" "}
-          <Link href={altHref} className="font-bold text-[#0A65FC]">
+          <Link href={altHref} className="font-bold text-link">
             {alt}
           </Link>
         </div>
-        <div className="my-3 text-center text-[#9AA3C7]">OU</div>
+        <div className="my-3 text-center text-disabled">OU</div>
         {["Continuar com Google", "Continuar com Facebook", "Continuar com Apple"].map((item) => (
           <Button
             key={item}
             type="button"
             variant="outline"
-            className="mb-2 h-auto w-full rounded-full border-[#E4E7F0] bg-white py-2.5 font-semibold text-[#061257] hover:bg-white"
+            className="mb-2 h-auto w-full rounded-full border-line bg-white py-2.5 font-semibold text-ink hover:bg-white"
           >
             {item}
           </Button>
         ))}
-        <p className="mt-4 text-[12px] text-[#384179]">
+        <p className="mt-4 text-xs text-text">
           Ao continuar, concordo com os{" "}
           <Link href="/termos" className="underline">
             Termos e condições

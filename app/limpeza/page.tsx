@@ -11,23 +11,23 @@ export default function CleaningPage() {
     <div className="bg-white">
       <Header />
       <main>
-        <section className="m-4 grid min-h-[360px] gap-5 rounded-[28px] bg-[#8E8680] p-7 xl:grid-cols-[1.2fr_0.8fr]">
+        <section className="m-4 grid min-h-[360px] gap-5 rounded-[28px] bg-ink p-7 xl:grid-cols-[1.2fr_0.8fr]">
           <div className="self-center text-white">
-            <h1 className="text-[36px] leading-none font-extrabold tracking-[-0.8px] xl:text-[46px]">
+            <h1 className="text-h1 leading-none font-extrabold xl:text-[46px]">
               Encontre um profissional de limpeza perto de você
             </h1>
             <p className="mt-3 text-[16px]">
               Preencha um formulário curto e receba orçamentos grátis de um profissional de limpeza perto de você
             </p>
-            <p className="mt-2.5 text-[13px]">Ótima avaliação — 4,2/5 (mais de 11.114 avaliações)</p>
+            <p className="mt-2.5 text-fine">Ótima avaliação — 4,2/5 (mais de 11.114 avaliações)</p>
           </div>
-          <div className="rounded-2xl bg-white p-[18px]">
-            <h2 className="text-[20px] font-extrabold text-[#061257]">
+          <div className="rounded-card bg-white p-[18px]">
+            <h2 className="text-[20px] font-extrabold text-ink">
               Receba ajuda de um profissional de limpeza local hoje
             </h2>
             {cleaningChecks.map((item) => (
               <div key={item} className="mt-2 flex gap-2">
-                <span className="text-[#0A65FC]">✓</span>
+                <span className="text-link">✓</span>
                 <span>{item}</span>
               </div>
             ))}
@@ -41,7 +41,7 @@ export default function CleaningPage() {
         </section>
         <section className="grid gap-3 px-7 pt-2 pb-7 text-center sm:grid-cols-2 xl:grid-cols-5">
           {cleaningPoints.map((item) => (
-            <div key={item} className="font-bold text-[#061257]">
+            <div key={item} className="font-bold text-ink">
               {item}
             </div>
           ))}

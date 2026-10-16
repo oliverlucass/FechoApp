@@ -4,15 +4,15 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "cn";
 
 const tones = {
-  blue: "bg-[#0A65FC] text-white hover:bg-[#0A65FC]",
-  white: "bg-white text-[#061257] hover:bg-white",
-  navy: "bg-[#061257] text-white hover:bg-[#061257]",
-  ghost: "bg-[#F3F3F7] text-[#061257] hover:bg-[#F3F3F7]",
+  action: "border-action-edge bg-action text-on-action hover:bg-action-hover",
+  white: "border-white bg-white text-ink hover:bg-white",
+  ink: "border-transparent bg-ink text-white hover:bg-ink",
+  tint: "border-transparent bg-action-tint text-ink hover:bg-action-tint",
 } as const;
 
 export function Pill({
   href,
-  tone = "blue",
+  tone = "action",
   block = false,
   children,
   className,
@@ -29,7 +29,7 @@ export function Pill({
 }) {
   const classes = cn(
     buttonVariants({ variant: "default", size: "lg" }),
-    "h-auto rounded-full border-0 px-[18px] py-[10px] text-center text-[14px] font-bold tracking-[0.2px] shadow-none active:translate-y-0",
+    "h-auto rounded-full px-[18px] py-[10px] text-center text-sm font-bold active:translate-y-0",
     tones[tone],
     block && "flex w-full",
     className,
