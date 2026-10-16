@@ -1,5 +1,11 @@
 export type TaskStatus = "aberta" | "atribuida" | "concluida";
 
+export type Proposal = {
+  name: string;
+  amount: string;
+  note: string;
+};
+
 export type Task = {
   slug: string;
   title: string;
@@ -10,6 +16,8 @@ export type Task = {
   price: string;
   offers: string;
   offerCount: number;
+  proposals: Proposal[];
+  photos: string[];
   status: TaskStatus;
   poster: string;
   posterName: string;
@@ -35,13 +43,52 @@ function offersLine(status: TaskStatus, count: number) {
   return `${statusLabel[status]} · ${count} ${noun}`;
 }
 
+const proposalPool: Array<[string, string]> = [
+  ["Rafael F.", "Levo as ferramentas e consigo ir no período combinado."],
+  ["Camila S.", "Já fiz um serviço parecido neste bairro."],
+  ["Bruno L.", "Posso começar assim que a data for confirmada."],
+  ["Ana P.", "O valor inclui o deslocamento."],
+  ["Paulo G.", "Disponível nesta semana, sem custo extra de material básico."],
+  ["Helena M.", "Consigo encaixar no horário pedido."],
+  ["Diego G.", "Combino o pagamento antes de começar."],
+  ["Lívia N.", "Tenho experiência com esse tipo de tarefa."],
+];
+
+const photosByCategory: Record<string, string[]> = {
+  Limpeza: ["/ilustracoes/limpeza.svg", "/ilustracoes/faz-tudo.svg"],
+  Montagem: ["/ilustracoes/montagem.svg", "/ilustracoes/faz-tudo.svg"],
+  Pintura: ["/ilustracoes/pintura.svg", "/ilustracoes/faz-tudo.svg"],
+  Entrega: ["/ilustracoes/entrega.svg", "/ilustracoes/mudanca.svg"],
+  Mudanças: ["/ilustracoes/mudanca.svg", "/ilustracoes/entrega.svg"],
+  Jardinagem: ["/ilustracoes/jardim.svg", "/ilustracoes/faz-tudo.svg"],
+  Negócios: ["/ilustracoes/negocios.svg", "/ilustracoes/design.svg"],
+  Design: ["/ilustracoes/design.svg", "/ilustracoes/negocios.svg"],
+  "Faz-tudo": ["/ilustracoes/faz-tudo.svg", "/ilustracoes/montagem.svg"],
+};
+
+function proposalAmount(price: string, index: number) {
+  const value = Number(price.replace(/[^\d]/g, ""));
+  if (!Number.isFinite(value) || value === 0) return price;
+  return `R$ ${Math.max(40, value - index * 15).toLocaleString("pt-BR")}`;
+}
+
+function proposalsFor(price: string, count: number, clientName: string): Proposal[] {
+  const people = proposalPool.filter(([name]) => name !== clientName);
+  return Array.from({ length: count }, (_, index) => {
+    const [name, note] = people[index % people.length];
+    return { name, amount: proposalAmount(price, index), note };
+  });
+}
+
 function task(
-  input: Omit<Task, "meta" | "offers"> & { meta?: string },
+  input: Omit<Task, "meta" | "offers" | "proposals" | "photos"> & { meta?: string },
 ): Task {
   return {
     ...input,
     meta: input.meta ?? `${input.location} · ${input.when}`,
     offers: offersLine(input.status, input.offerCount),
+    proposals: proposalsFor(input.price, input.offerCount, input.clientName),
+    photos: photosByCategory[input.category] ?? ["/ilustracoes/faz-tudo.svg", "/ilustracoes/limpeza.svg"],
   };
 }
 

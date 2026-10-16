@@ -15,9 +15,9 @@ export function TaskBudgetCard({ price, status }: { price: string; status: TaskS
   const label = status === "atribuida" ? "Atribuída" : status === "concluida" ? "Concluída" : "Fazer proposta";
 
   return (
-    <aside className="rounded-card bg-surface p-3">
-      <div className="text-[11px] font-bold tracking-[0.6px] text-muted uppercase">Orçamento da tarefa</div>
-      <div className="font-heading text-[40px] leading-none font-extrabold text-ink">{price}</div>
+    <aside className="rounded-card border border-line bg-white p-3">
+      <div className="text-caps font-bold tracking-[0.6px] text-muted uppercase">Orçamento da tarefa</div>
+      <div className="font-heading text-display leading-none font-extrabold text-ink">{price}</div>
       {locked ? (
         <Pill block className="mt-3" disabled>
           {label}

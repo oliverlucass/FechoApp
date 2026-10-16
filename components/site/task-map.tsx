@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { GeolocateControl, Map as MapLibreMap, Marker, NavigationControl } from "maplibre-gl";
+import { GeolocateControl, Map as MapLibreMap, Marker, NavigationControl, setWorkerUrl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+
+setWorkerUrl("/maplibre-gl-worker.mjs");
 
 export type MapMarker = {
   id: string;

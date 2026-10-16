@@ -1,11 +1,17 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import { BrowseFilters } from "@/components/site/browse-filters";
 import { TaskCard } from "@/components/site/task-card";
-import { TaskMap, type MapMarker } from "@/components/site/task-map";
+import type { MapMarker } from "@/components/site/task-map";
 import type { Task } from "@/lib/content";
 import { cn } from "cn";
+
+const TaskMap = dynamic(() => import("@/components/site/task-map").then((mod) => mod.TaskMap), {
+  ssr: false,
+  loading: () => <div className="h-full min-h-0 w-full bg-line" />,
+});
 
 export function BrowseView({ tasks }: { tasks: Task[] }) {
   const [query, setQuery] = useState("");

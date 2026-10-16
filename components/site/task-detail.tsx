@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Calendar, MapPin, UserRound } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Calendar, ChevronLeft, MapPin, UserRound } from "lucide-react";
+import { FollowButton } from "@/components/site/follow-button";
 import { TaskBudgetCard } from "@/components/site/task-budget-card";
 import { TaskCard } from "@/components/site/task-card";
 import type { Task, TaskStatus } from "@/lib/content";
@@ -24,7 +25,7 @@ function stepClass(step: TaskStatus, current: TaskStatus) {
 function Meta({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
   return (
     <div className="mt-4">
-      <div className="flex items-center gap-2 text-[11px] font-bold tracking-[0.6px] text-muted uppercase">
+      <div className="flex items-center gap-2 text-caps font-bold tracking-[0.6px] text-muted uppercase">
         {icon}
         {label}
       </div>
@@ -43,24 +44,39 @@ export function TaskDetail({ task, rail }: { task: Task; rail: Task[] }) {
       </aside>
       <article className="min-h-0 overflow-y-auto px-4 py-4">
         <div className="mb-3 flex items-center justify-between gap-3">
-          <Link href="/tarefas" className="text-sm text-link">
+          <Link href="/tarefas" className="inline-flex items-center gap-1 text-sm text-link">
+            <ChevronLeft className="size-4" aria-hidden="true" />
             Voltar ao mapa
           </Link>
-          <Badge variant="neutral">Seguir</Badge>
+          <FollowButton />
         </div>
         <div className="flex flex-wrap gap-2">
           {steps.map((step) => (
-            <span key={step} className={`rounded-pill px-2.5 py-1 text-[11px] font-bold tracking-[0.6px] uppercase ${stepClass(step, task.status)}`}>
+            <span key={step} className={`rounded-pill px-2.5 py-1 text-caps font-bold tracking-[0.6px] uppercase ${stepClass(step, task.status)}`}>
               {stepLabel[step]}
             </span>
           ))}
         </div>
         <h1 className="mt-3 text-h1 font-extrabold text-ink">{task.title}</h1>
+        <ul aria-label="Fotos de exemplo" className="mt-4 flex gap-2">
+          {task.photos.map((src) => (
+            <li key={src}>
+              <Image
+                src={src}
+                alt=""
+                width={72}
+                height={72}
+                unoptimized
+                className="size-18 rounded-thumb"
+              />
+            </li>
+          ))}
+        </ul>
         <div className="mt-4 md:hidden">
           <TaskBudgetCard price={task.price} status={task.status} />
         </div>
         <Meta icon={<UserRound className="size-3.5" aria-hidden="true" />} label="Publicado por">
-          <span className="mr-2 inline-flex size-9 items-center justify-center rounded-full bg-action-tint text-[13px] font-bold align-middle">
+          <span className="mr-2 inline-flex size-9 items-center justify-center rounded-full bg-action-tint text-fine font-bold align-middle">
             {task.poster}
           </span>
           {task.clientName}
@@ -69,7 +85,7 @@ export function TaskDetail({ task, rail }: { task: Task; rail: Task[] }) {
           {task.location}
         </Meta>
         <Meta icon={<Calendar className="size-3.5" aria-hidden="true" />} label="Para quando">
-          {task.when} · {task.time}
+          {task.time && task.time.trim() !== task.when.trim() ? `${task.when} · ${task.time}` : task.when}
         </Meta>
         <h2 className="mt-6 text-lg font-bold text-ink">Detalhes</h2>
         <p className="mt-2 text-base">{task.details}</p>
@@ -82,13 +98,17 @@ export function TaskDetail({ task, rail }: { task: Task; rail: Task[] }) {
           </p>
         ) : null}
         <h2 className="mt-6 text-lg font-bold text-ink">Propostas</h2>
-        {task.offerCount === 0 ? (
+        {task.proposals.length === 0 ? (
           <p className="mt-2 text-sm text-muted">Nenhuma proposta ainda.</p>
         ) : (
           <ul className="mt-2 space-y-2">
-            {Array.from({ length: Math.min(task.offerCount, 3) }, (_, index) => (
-              <li key={index} className="rounded-card bg-white p-3 text-sm">
-                Proposta de exemplo {index + 1}. O valor fica no chat.
+            {task.proposals.map((proposal, index) => (
+              <li key={`${proposal.name}-${index}`} className="rounded-card border border-line bg-white p-3 text-sm">
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="font-bold text-ink">{proposal.name}</span>
+                  <span className="font-bold text-ink">{proposal.amount}</span>
+                </div>
+                <p className="mt-1 text-text">{proposal.note}</p>
               </li>
             ))}
           </ul>

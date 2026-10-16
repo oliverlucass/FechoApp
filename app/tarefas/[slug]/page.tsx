@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/site/header";
 import { TaskDetail } from "@/components/site/task-detail";
@@ -18,18 +19,23 @@ export async function generateMetadata({
   return { title: found?.task.title ?? "Tarefa" };
 }
 
-export default async function TaskPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const found = findTask(slug);
-  if (!found) notFound();
-  const rail = browseTasks.some((item) => item.slug === found.task.slug) ? browseTasks : tasks.slice(0, 6);
-
+export default function TaskPage({ params }: { params: Promise<{ slug: string }> }) {
   return (
     <div className="min-h-screen bg-surface">
       <Header />
       <main>
-        <TaskDetail task={found.task} rail={rail} />
+        <Suspense fallback={<p className="p-6 text-sm text-muted">Carregando tarefa…</p>}>
+          <TaskBody params={params} />
+        </Suspense>
       </main>
     </div>
   );
+}
+
+async function TaskBody({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const found = findTask(slug);
+  if (!found) notFound();
+  const rail = browseTasks.some((item) => item.slug === found.task.slug) ? browseTasks : tasks.slice(0, 6);
+  return <TaskDetail task={found.task} rail={rail} />;
 }
