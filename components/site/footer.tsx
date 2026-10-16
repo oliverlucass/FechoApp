@@ -25,10 +25,34 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-8 flex items-center gap-4 text-white">
+        <p className="mt-8 text-xs text-line">Redes e lojas de aplicativos. Os links ainda não existem.</p>
+        <div className="mt-3 flex items-center gap-4 text-white">
           {socials.map(({ icon: Icon, label }) => (
-            <span key={label} role="img" aria-label={label} className="inline-flex size-9 items-center justify-center">
+            <span
+              key={label}
+              role="link"
+              aria-disabled="true"
+              aria-label={`${label}, link provisório`}
+              className="inline-flex size-9 items-center justify-center"
+            >
               <Icon className="size-5" />
+            </span>
+          ))}
+        </div>
+        <div className="mt-3 flex flex-wrap gap-3">
+          {[
+            ["Baixar na", "App Store"],
+            ["Disponível no", "Google Play"],
+          ].map(([detail, name]) => (
+            <span
+              key={name}
+              role="link"
+              aria-disabled="true"
+              aria-label={`${detail} ${name}, link provisório`}
+              className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/40 bg-white px-3 py-1 text-ink"
+            >
+              <span className="text-caps leading-none uppercase">{detail}</span>
+              <span className="text-sm font-bold">{name}</span>
             </span>
           ))}
         </div>
