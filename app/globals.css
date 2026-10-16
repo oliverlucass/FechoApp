@@ -66,6 +66,7 @@
   --radius-search: 16px;
   --radius-pill: 9999px;
   --radius-mark: 6px;
+  --radius-thumb: 8px;
   --text-xs: 12px;
   --text-xs--line-height: 16px;
   --text-xs--letter-spacing: 0.25px;
@@ -196,4 +197,8 @@
     font-family: var(--font-heading);
     letter-spacing: normal;
   }
+}
+
+.maplibregl-ctrl-group {
+  box-shadow: var(--shadow-control);
 }
