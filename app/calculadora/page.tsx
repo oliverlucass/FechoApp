@@ -24,7 +24,7 @@ export default function CalculatorPage() {
       <main className="m-4 grid items-center gap-6 rounded-[28px] bg-ink p-6 text-white xl:grid-cols-2 xl:p-9">
         <div>
           <h1 className="text-h1 leading-none font-extrabold xl:text-[46px]">
-            Calculadora de renda extra do FechoApp
+            Calculadora de renda extra do Fechô
           </h1>
           <p className="mt-3.5 text-lg">Quer monetizar suas habilidades? Estime quanto você pode ganhar.</p>
         </div>
@@ -88,7 +88,7 @@ export default function CalculatorPage() {
             <Pill type="submit">Calcular seus ganhos →</Pill>
           </div>
           {result !== null ? (
-            <p className="mt-3 font-extrabold">Estimativa: ${result.toLocaleString("pt-BR")} por mês</p>
+            <p className="mt-3 font-extrabold">Estimativa ilustrativa: R$ {result.toLocaleString("pt-BR")} por mês</p>
           ) : null}
         </form>
       </main>

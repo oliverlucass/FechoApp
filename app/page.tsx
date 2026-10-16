@@ -35,33 +35,6 @@ export default function HomePage() {
               Ganhe dinheiro como Fechador
             </Pill>
           </div>
-          <div className="mt-2.5 text-[12px] xl:mt-4 xl:flex xl:justify-center xl:gap-[22px] xl:text-fine">
-            <span className="xl:hidden">1 mi+ clientes</span>
-            <span className="hidden xl:inline">1 mi+ clientes</span>
-            <span className="hidden xl:inline">2,5 mi+ tarefas feitas</span>
-            <span className="hidden xl:inline">4 mi+ avaliações</span>
-          </div>
-          <div className="mt-2 hidden text-fine text-action xl:block">
-            Trustpilot 4,0 Ótimo · 13.330 avaliações
-          </div>
-        </section>
-
-        <section id="assinatura" className="mx-3 mb-5 rounded-[18px] bg-action-tint p-4 xl:mx-4 xl:mb-5 xl:flex xl:items-center xl:gap-[18px] xl:rounded-[20px] xl:px-[22px] xl:py-[18px]">
-          <div className="xl:flex-1">
-            <div className="font-extrabold text-link">Assinatura FechoApp</div>
-            <div className="text-[22px] font-extrabold text-ink xl:text-[28px]">
-              Taxa de conexão $0 o ano inteiro.
-            </div>
-            <div className="mt-2.5">
-              <Pill href="#assinatura">Assinar agora →</Pill>
-            </div>
-            <div className="mt-2 hidden text-xs text-ink xl:block">
-              Assinatura $89/ano. Termos se aplicam.
-            </div>
-          </div>
-          <div className="mt-4 hidden h-[90px] w-[180px] items-center justify-center rounded-card bg-ink font-extrabold text-action xl:flex">
-            MEMBRO FECHOAPP
-          </div>
         </section>
 
         <section className="grid gap-6 px-5 py-3 pb-7 xl:grid-cols-[0.8fr_1.2fr] xl:px-7">

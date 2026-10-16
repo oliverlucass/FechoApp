@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/site/header";
 import { TaskCard } from "@/components/site/task-card";
-import { browseTasks } from "@/lib/content";
+import { browsePlace, browseTasks } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Ver tarefas" };
 
-const filters = ["Categoria", "30 mi Ashburn VA 20149 e remoto", "Qualquer preço", "Outros filtros", "Ordenar"];
+const filters = ["Categoria", browsePlace, "Qualquer preço", "Outros filtros", "Ordenar"];
 
 export default function BrowsePage() {
   return (
@@ -53,10 +53,11 @@ export default function BrowsePage() {
         <div className="p-3 xl:hidden">
           <h1 className="font-extrabold text-ink">Você está vendo tarefas</h1>
           <div className="mt-2 rounded-search bg-white p-2.5">Buscar uma tarefa</div>
-          <div className="mt-2 text-[12px]">30 mi Ashburn VA 20149 e remoto</div>
+          <div className="mt-2 text-[12px]">{browsePlace}</div>
           <div className="mt-2">
-            <TaskCard href="/tarefas/livros-betty-neel" title="Ajuda para vender um lote de livros da Betty Neel" meta="Remoto" price="$30" offers="Aberta" />
-            <TaskCard href="/tarefas/trabalho-no-patio" title="Trabalho no pátio" meta="Oakton VA" price="$300" offers="Aberta" />
+            {browseTasks.map((task) => (
+              <TaskCard key={task.slug} href={`/tarefas/${task.slug}`} title={task.title} meta={task.meta} price={task.price} offers={task.offers} />
+            ))}
           </div>
         </div>
       </main>

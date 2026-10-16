@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Trabalhos" };
 export default function JobsPage() {
   return (
     <Counts
-      title="Encontre trabalhos na Austrália"
+      title="Encontre trabalhos no Brasil"
       lede="Da limpeza residencial ao design gráfico."
       stats={jobStats}
     />

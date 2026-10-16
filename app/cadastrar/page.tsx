@@ -5,6 +5,6 @@ export const metadata: Metadata = { title: "Cadastrar" };
 
 export default function SignUpPage() {
   return (
-    <AuthScreen title="Cadastre-se no FechoApp" altPrompt="Já tem uma conta?" alt="Entrar" altHref="/entrar" />
+    <AuthScreen title="Cadastre-se no Fechô" altPrompt="Já tem uma conta?" alt="Entrar" altHref="/entrar" />
   );
 }

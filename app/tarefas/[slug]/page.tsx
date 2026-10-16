@@ -42,7 +42,9 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
           <article className="rounded-card bg-white p-[18px]">
             {lease ? (
               <div className="flex items-center justify-between gap-3 rounded-card bg-surface p-3">
-                <span>Martha L. atribuiu Kati A. para ajudar nesta tarefa.</span>
+                <span>
+                  {task.clientName} atribuiu {task.assigneeName} para ajudar nesta tarefa.
+                </span>
                 <Pill href="/publicar">Publicar uma tarefa parecida</Pill>
               </div>
             ) : null}
@@ -62,9 +64,11 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
             </div>
             {lease ? (
               <>
-                <div className="mt-2">Publicado por Martha L. · há mais de 4 anos</div>
-                <div>Local · Kensington VIC, Austrália · Ver mapa</div>
-                <div>seg., 21 de fev. de 2022 · Manhã, meio-dia, tarde</div>
+                <div className="mt-2">Publicado por {task.clientName}</div>
+                <div>Local · {task.location} · Ver mapa</div>
+                <div>
+                  {task.when} · {task.time}
+                </div>
               </>
             ) : (
               <div className="mt-2">{task.meta}</div>
@@ -73,10 +77,10 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
             <p>{lease ? leaseTask.details : task.details}</p>
             {lease ? (
               <p className="mt-3 font-bold">
-                <Link href="/fechadores/kati-a" className="text-link">
-                  Kati A.
+                <Link href={`/fechadores/${task.assigneeSlug}`} className="text-link">
+                  {task.assigneeName}
                 </Link>{" "}
-                · 4,9 · 100%
+                · 4,9 · avaliação de exemplo
               </p>
             ) : null}
           </article>
@@ -85,12 +89,12 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
         <article className="p-3.5 xl:hidden">
           <h1 className="text-[24px] font-extrabold text-ink">{task.title}</h1>
           <div>
-            {lease ? "Kensington VIC" : task.meta} · {task.price}
+            {lease ? task.location : task.meta} · {task.price}
           </div>
           <p className="mt-2">{lease ? leaseTask.phone : task.details}</p>
           {lease ? (
             <div className="mt-2.5 font-bold">
-              <Link href="/fechadores/kati-a">Kati A.</Link> · 4,9 · 100%
+              <Link href={`/fechadores/${task.assigneeSlug}`}>{task.assigneeName}</Link> · 4,9 · avaliação de exemplo
             </div>
           ) : null}
         </article>

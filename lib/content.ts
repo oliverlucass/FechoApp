@@ -1,34 +1,465 @@
+export type TaskStatus = "aberta" | "atribuida" | "concluida";
+
+export type Task = {
+  slug: string;
+  title: string;
+  meta: string;
+  location: string;
+  when: string;
+  time: string;
+  price: string;
+  offers: string;
+  offerCount: number;
+  status: TaskStatus;
+  poster: string;
+  posterName: string;
+  clientName: string;
+  assigneeName?: string;
+  assigneeSlug?: string;
+  details: string;
+  phone?: string;
+  category: string;
+  lng: number;
+  lat: number;
+};
+
+const statusLabel: Record<TaskStatus, string> = {
+  aberta: "Aberta",
+  atribuida: "Atribuída",
+  concluida: "Concluída",
+};
+
+function offersLine(status: TaskStatus, count: number) {
+  if (count === 0) return statusLabel[status];
+  const noun = count === 1 ? "proposta" : "propostas";
+  return `${statusLabel[status]} · ${count} ${noun}`;
+}
+
+function task(
+  input: Omit<Task, "meta" | "offers"> & { meta?: string },
+): Task {
+  return {
+    ...input,
+    meta: input.meta ?? `${input.location} · ${input.when}`,
+    offers: offersLine(input.status, input.offerCount),
+  };
+}
+
+export const tasks: Task[] = [
+  task({
+    slug: "chuveiro",
+    title: "Trocar resistência do chuveiro",
+    location: "Pinheiros, São Paulo",
+    when: "Antes de sex., 23 out.",
+    time: "Manhã",
+    price: "R$ 120",
+    offerCount: 3,
+    status: "aberta",
+    poster: "MA",
+    posterName: "Marina A.",
+    clientName: "Marina A.",
+    details: "O chuveiro parou de esquentar. Preciso trocar a resistência em um banheiro em Pinheiros. O aparelho já está no lugar.",
+    category: "Faz-tudo",
+    lng: -46.691,
+    lat: -23.567,
+  }),
+  task({
+    slug: "guarda-roupa",
+    title: "Montar guarda-roupa 6 portas",
+    location: "Moema, São Paulo",
+    when: "Hoje",
+    time: "Tarde",
+    price: "R$ 250",
+    offerCount: 8,
+    status: "atribuida",
+    poster: "RF",
+    posterName: "Rafael F.",
+    clientName: "Helena M.",
+    assigneeName: "Rafael F.",
+    assigneeSlug: "rafael-f",
+    details: "Guarda-roupa de seis portas, ainda na caixa, no quarto de um apartamento em Moema. Ferramentas básicas ajudam.",
+    category: "Montagem",
+    lng: -46.662,
+    lat: -23.601,
+  }),
+  task({
+    slug: "faxina-pos-mudanca",
+    title: "Faxina pós-mudança, 2 quartos",
+    location: "Tijuca, Rio de Janeiro",
+    when: "Flexível",
+    time: "Flexível",
+    price: "R$ 300",
+    offerCount: 1,
+    status: "concluida",
+    poster: "CS",
+    posterName: "Camila S.",
+    clientName: "Camila S.",
+    details: "Apartamento de dois quartos na Tijuca depois de uma mudança. Limpeza interna, sem área externa.",
+    category: "Limpeza",
+    lng: -43.237,
+    lat: -22.925,
+  }),
+  task({
+    slug: "pintar-sala",
+    title: "Pintar sala e corredor",
+    location: "Savassi, Belo Horizonte",
+    when: "Antes de seg., 2 nov.",
+    time: "Dia inteiro",
+    price: "R$ 900",
+    offerCount: 5,
+    status: "aberta",
+    poster: "BL",
+    posterName: "Bruno L.",
+    clientName: "Bruno L.",
+    details: "Pintura da sala e do corredor em um apartamento na Savassi. A tinta já foi escolhida.",
+    category: "Pintura",
+    lng: -43.937,
+    lat: -19.938,
+  }),
+  task({
+    slug: "geladeira-media",
+    title: "Buscar e entregar uma geladeira média",
+    location: "Vila Mariana, São Paulo",
+    when: "Flexível",
+    time: "Tarde",
+    price: "R$ 180",
+    offerCount: 2,
+    status: "aberta",
+    poster: "AP",
+    posterName: "Ana P.",
+    clientName: "Ana P.",
+    details: "Buscar uma geladeira média na Vila Mariana e entregar no mesmo bairro. Há elevador.",
+    category: "Entrega",
+    lng: -46.638,
+    lat: -23.589,
+  }),
+  task({
+    slug: "colchao-king",
+    title: "Busca e entrega de colchão king",
+    location: "Batel, Curitiba",
+    when: "Flexível",
+    time: "Manhã",
+    price: "R$ 150",
+    offerCount: 1,
+    status: "aberta",
+    poster: "LS",
+    posterName: "Lucas S.",
+    clientName: "Lucas S.",
+    details: "Retirar um colchão king e entregar em outro apartamento no Batel.",
+    category: "Entrega",
+    lng: -49.287,
+    lat: -25.442,
+  }),
+  task({
+    slug: "entrega-de-sofa",
+    title: "Entrega de sofá",
+    location: "Botafogo, Rio de Janeiro",
+    when: "Flexível",
+    time: "Tarde",
+    price: "R$ 160",
+    offerCount: 0,
+    status: "aberta",
+    poster: "JC",
+    posterName: "João C.",
+    clientName: "João C.",
+    details: "Levar um sofá de dois lugares de uma loja em Botafogo até um apartamento no mesmo bairro.",
+    category: "Entrega",
+    lng: -43.186,
+    lat: -22.951,
+  }),
+  task({
+    slug: "limpeza-fim-de-contrato",
+    title: "Limpeza de fim de contrato",
+    location: "Consolação, São Paulo",
+    when: "seg., 21 de fev.",
+    time: "Manhã, meio-dia, tarde",
+    price: "R$ 450",
+    offerCount: 1,
+    status: "atribuida",
+    poster: "HM",
+    posterName: "Helena M.",
+    clientName: "Helena M.",
+    assigneeName: "Marina A.",
+    assigneeSlug: "marina-a",
+    details:
+      "Apartamento pequeno de dois quartos na Consolação, só a parte interna. Inclui limpeza dos pisos dos dois quartos e da escada. Não precisa da área externa.",
+    phone: "Apartamento pequeno de dois quartos. Limpeza dos pisos. Só a parte interna.",
+    category: "Limpeza",
+    lng: -46.662,
+    lat: -23.553,
+  }),
+  task({
+    slug: "mudanca-hoje",
+    title: "Mudança hoje",
+    location: "Perdizes, São Paulo",
+    when: "Hoje",
+    time: "Manhã",
+    price: "R$ 280",
+    offerCount: 4,
+    status: "aberta",
+    poster: "TR",
+    posterName: "Tiago R.",
+    clientName: "Tiago R.",
+    details: "Mudança de um kitnet em Perdizes para outro prédio na mesma região. Preciso para hoje.",
+    category: "Mudanças",
+    lng: -46.678,
+    lat: -23.537,
+  }),
+  task({
+    slug: "mudanca-urgente",
+    title: "Mudança urgente",
+    location: "Copacabana, Rio de Janeiro",
+    when: "Hoje",
+    time: "Tarde",
+    price: "R$ 520",
+    offerCount: 2,
+    status: "aberta",
+    poster: "FS",
+    posterName: "Fernanda S.",
+    clientName: "Fernanda S.",
+    details: "Mudança urgente de um apartamento de um quarto em Copacabana. Há poucos móveis.",
+    category: "Mudanças",
+    lng: -43.186,
+    lat: -22.971,
+  }),
+  task({
+    slug: "ajuda-mudanca",
+    title: "Ajuda para mudar de casa",
+    location: "Centro, Curitiba",
+    when: "Flexível",
+    time: "Dia inteiro",
+    price: "R$ 400",
+    offerCount: 3,
+    status: "aberta",
+    poster: "PG",
+    posterName: "Paulo G.",
+    clientName: "Paulo G.",
+    details: "Ajuda para carregar caixas e móveis desmontados em uma mudança no centro de Curitiba.",
+    category: "Mudanças",
+    lng: -49.273,
+    lat: -25.429,
+  }),
+  task({
+    slug: "mudanca-1km",
+    title: "Mudança a 1 km na mesma rua",
+    location: "Perdizes, São Paulo",
+    when: "Flexível",
+    time: "Manhã",
+    price: "R$ 350",
+    offerCount: 1,
+    status: "aberta",
+    poster: "TR",
+    posterName: "Tiago R.",
+    clientName: "Tiago R.",
+    details: "Mudança curta, cerca de 1 km na mesma rua em Perdizes.",
+    category: "Mudanças",
+    lng: -46.682,
+    lat: -23.532,
+  }),
+  task({
+    slug: "suporte-online",
+    title: "Ajuda com tarefas básicas de suporte online",
+    location: "Remoto",
+    when: "Antes de qua., 21 de out.",
+    time: "Horário comercial",
+    price: "R$ 200",
+    offerCount: 0,
+    status: "aberta",
+    poster: "AL",
+    posterName: "Aline L.",
+    clientName: "Aline L.",
+    details: "Responder mensagens e organizar uma planilha simples. Trabalho remoto, antes de quarta-feira, 21 de outubro.",
+    category: "Negócios",
+    lng: -46.633,
+    lat: -23.55,
+  }),
+  task({
+    slug: "livros-usados",
+    title: "Ajuda para vender um lote de livros usados",
+    location: "Remoto",
+    when: "Flexível",
+    time: "Flexível",
+    price: "R$ 80",
+    offerCount: 0,
+    status: "aberta",
+    poster: "AL",
+    posterName: "Aline L.",
+    clientName: "Aline L.",
+    details: "Organizar anúncios de um lote de livros usados. O prazo é flexível e o trabalho é remoto.",
+    category: "Negócios",
+    lng: -46.64,
+    lat: -23.555,
+  }),
+  task({
+    slug: "conferir-mapa",
+    title: "Conferir um lugar no mapa",
+    location: "Remoto",
+    when: "Flexível",
+    time: "Flexível",
+    price: "R$ 40",
+    offerCount: 3,
+    status: "aberta",
+    poster: "AL",
+    posterName: "Aline L.",
+    clientName: "Aline L.",
+    details: "Conferir se o endereço de uma loja em São Paulo está certo no mapa. Trabalho remoto.",
+    category: "Negócios",
+    lng: -46.655,
+    lat: -23.561,
+  }),
+  task({
+    slug: "trabalho-no-patio",
+    title: "Trabalho no pátio",
+    location: "Pinheiros, São Paulo",
+    when: "Flexível",
+    time: "Manhã",
+    price: "R$ 300",
+    offerCount: 1,
+    status: "aberta",
+    poster: "MA",
+    posterName: "Marina A.",
+    clientName: "Marina A.",
+    details: "Organizar o pátio de uma casa em Pinheiros: varrer, recolher folhas e alinhar os vasos.",
+    category: "Jardinagem",
+    lng: -46.699,
+    lat: -23.562,
+  }),
+  task({
+    slug: "corte-de-grama",
+    title: "Corte de grama",
+    location: "Cambuí, Campinas",
+    when: "Hoje",
+    time: "Manhã",
+    price: "R$ 120",
+    offerCount: 1,
+    status: "aberta",
+    poster: "BL",
+    posterName: "Bruno L.",
+    clientName: "Bruno L.",
+    details: "Cortar a grama de um quintal no Cambuí. Preciso para hoje.",
+    category: "Jardinagem",
+    lng: -47.063,
+    lat: -22.899,
+  }),
+  task({
+    slug: "consultoria-de-interiores",
+    title: "Consultoria de design de interiores",
+    location: "Remoto",
+    when: "Flexível",
+    time: "Tarde",
+    price: "R$ 500",
+    offerCount: 1,
+    status: "aberta",
+    poster: "CS",
+    posterName: "Camila S.",
+    clientName: "Camila S.",
+    details: "Uma conversa remota para definir o layout de um apartamento novo.",
+    category: "Design",
+    lng: -46.633,
+    lat: -23.548,
+  }),
+  task({
+    slug: "contabilidade",
+    title: "Contabilidade",
+    location: "Remoto",
+    when: "Flexível",
+    time: "Horário comercial",
+    price: "R$ 250",
+    offerCount: 8,
+    status: "aberta",
+    poster: "PG",
+    posterName: "Paulo G.",
+    clientName: "Paulo G.",
+    details: "Organizar notas e uma planilha simples de um mês. Trabalho remoto.",
+    category: "Negócios",
+    lng: -46.633,
+    lat: -23.552,
+  }),
+  task({
+    slug: "traducao-juramentada",
+    title: "Tradução juramentada",
+    location: "Remoto",
+    when: "Hoje",
+    time: "Hoje",
+    price: "R$ 180",
+    offerCount: 0,
+    status: "aberta",
+    poster: "AL",
+    posterName: "Aline L.",
+    clientName: "Aline L.",
+    details: "Tradução juramentada de um documento curto, para hoje, feita à distância.",
+    category: "Negócios",
+    lng: -46.633,
+    lat: -23.546,
+  }),
+];
+
+export const browseTasks = tasks.filter((item) =>
+  [
+    "chuveiro",
+    "guarda-roupa",
+    "faxina-pos-mudanca",
+    "pintar-sala",
+    "geladeira-media",
+    "suporte-online",
+    "livros-usados",
+    "trabalho-no-patio",
+    "corte-de-grama",
+  ].includes(item.slug),
+);
+
+export const railTasks = tasks.filter((item) =>
+  ["consultoria-de-interiores", "contabilidade", "traducao-juramentada", "chuveiro", "pintar-sala"].includes(item.slug),
+);
+
+export const leaseTask = tasks.find((item) => item.slug === "limpeza-fim-de-contrato")!;
+
+export const featuredJobs = tasks.filter((item) =>
+  [
+    "geladeira-media",
+    "colchao-king",
+    "entrega-de-sofa",
+    "mudanca-hoje",
+    "mudanca-urgente",
+    "ajuda-mudanca",
+    "mudanca-1km",
+  ].includes(item.slug),
+);
+
+export function findTask(slug: string) {
+  const found = tasks.find((item) => item.slug === slug);
+  if (!found) return null;
+  if (found.slug === leaseTask.slug) return { kind: "lease" as const, task: found };
+  if (railTasks.some((item) => item.slug === slug)) return { kind: "rail" as const, task: found };
+  if (browseTasks.some((item) => item.slug === slug)) return { kind: "browse" as const, task: found };
+  return { kind: "featured" as const, task: found };
+}
+
 export const categories = [
   ["Montagem de móveis", "Montagem e desmontagem de móveis prontos"],
-  ["Entregas", "Entregas urgentes e serviços de courier"],
-  ["Jardinagem e paisagismo", "Cobertura, capina e organização"],
+  ["Entregas", "Entregas no mesmo dia e coletas"],
+  ["Jardinagem e paisagismo", "Corte, capina e organização"],
   ["Pintura", "Pintura de paredes internas e externas"],
   ["Faz-tudo", "Ajuda com a manutenção da casa"],
-  ["Negócios e administração", "Ajuda com contabilidade e imposto de renda"],
-  ["Marketing e design", "Ajuda com site"],
-  ["Outra coisa", "Instalação de quadros e pinturas"],
-  ["Mudanças", "Embalagem, proteção, transporte e mais!"],
+  ["Negócios e administração", "Ajuda com planilhas e rotinas do dia a dia"],
+  ["Marketing e design", "Ajuda com site e peças simples"],
+  ["Outra coisa", "Instalação de quadros e pequenos reparos"],
+  ["Mudanças", "Embalagem, proteção, transporte e mais"],
   ["Limpeza residencial", "Limpar, passar pano e organizar a casa"],
 ] as const;
 
 export const homeJobs = [
-  ["ENTREGA", "Buscar e entregar uma geladeira média", "$100", "/tarefas/geladeira-media"],
-  ["ENTREGA", "Busca e entrega de colchão king", "$85", "/tarefas/colchao-king"],
-  ["ENTREGA", "Entrega de sofá", "$95", "/tarefas/entrega-de-sofa"],
-  ["LIMPEZA", "Limpeza de fim de contrato", "$450", "/tarefas/limpeza-fim-de-contrato"],
-  ["MUDANÇAS", "Mudança HOJE", "$60", "/tarefas/mudanca-hoje"],
-  ["MUDANÇAS", "Mudança urgente", "$506", "/tarefas/mudanca-urgente"],
-  ["MUDANÇAS", "Ajuda para mudar de casa", "$450", "/tarefas/ajuda-mudanca"],
-  ["MUDANÇAS", "Mudança a 1 km na mesma rua", "$500", "/tarefas/mudanca-1km"],
+  ["ENTREGA", "Buscar e entregar uma geladeira média", "R$ 180", "/tarefas/geladeira-media"],
+  ["ENTREGA", "Busca e entrega de colchão king", "R$ 150", "/tarefas/colchao-king"],
+  ["ENTREGA", "Entrega de sofá", "R$ 160", "/tarefas/entrega-de-sofa"],
+  ["LIMPEZA", "Limpeza de fim de contrato", "R$ 450", "/tarefas/limpeza-fim-de-contrato"],
+  ["MUDANÇAS", "Mudança hoje", "R$ 280", "/tarefas/mudanca-hoje"],
+  ["MUDANÇAS", "Mudança urgente", "R$ 520", "/tarefas/mudanca-urgente"],
+  ["MUDANÇAS", "Ajuda para mudar de casa", "R$ 400", "/tarefas/ajuda-mudanca"],
+  ["MUDANÇAS", "Mudança a 1 km na mesma rua", "R$ 350", "/tarefas/mudanca-1km"],
 ] as const;
 
-export const homeTabs = [
-  "Mudança",
-  "Manutenção da casa",
-  "Abrindo um negócio",
-  "Festas",
-  "Algo diferente",
-];
+export const homeTabs = ["Mudança", "Manutenção da casa", "Abrindo um negócio", "Festas", "Algo diferente"];
 
 export const menuColumns = [
   ["Contadores", "Administração", "Ajustes", "Eletrodomésticos", "Montagem", "Eletricistas automotivos", "Confeiteiros", "Barbeiros"],
@@ -53,11 +484,11 @@ export const cleaningChecks = [
 ];
 
 export const cleaningPoints = [
-  "Até 50% mais barato que franquias",
+  "Orçamento combinado antes de começar",
   "Nenhum trabalho é grande ou pequeno demais",
-  "Cobertura de seguro grátis",
-  "Pagamentos seguros sem dinheiro vivo",
-  "No mesmo dia ou no dia seguinte, sem custo extra",
+  "Pagamento combinado direto com o Fechador",
+  "Sem dinheiro vivo se vocês preferirem",
+  "No mesmo dia ou no dia seguinte, quando houver agenda",
 ];
 
 export const giftDesigns = [
@@ -68,142 +499,26 @@ export const giftDesigns = [
   "Parabéns",
   "Relaxe",
   "Pensando em você",
-  "FechoApp",
+  "Fechô",
 ];
 
-export const giftAmounts = ["$25", "$50", "$100", "$150", "$200", "$500", "$1,000"];
+export const giftAmounts = ["R$ 50", "R$ 100", "R$ 150", "R$ 200", "R$ 300", "R$ 500", "R$ 1.000"];
 
 export const serviceStats = [
-  ["Mudanças", "7.610 trabalhos publicados"],
-  ["Remoção de entulho", "5.928 trabalhos publicados"],
-  ["Limpeza", "4.770 trabalhos publicados"],
-  ["Jardinagem", "3.287 trabalhos publicados"],
-] as const;
-
-export const sydneyStats = [
-  ["Mudanças", "527 trabalhos publicados"],
-  ["Limpeza", "325 trabalhos publicados"],
-  ["Remoção de entulho", "244 trabalhos publicados"],
-  ["Faz-tudo", "129 trabalhos publicados"],
+  ["Mudanças", "Transporte e ajuda para carregar"],
+  ["Remoção de entulho", "Retirada de volumes e descarte"],
+  ["Limpeza", "Casas, apartamentos e fim de contrato"],
+  ["Jardinagem", "Corte, vasos e organização"],
 ] as const;
 
 export const jobStats = [
-  ["Mudanças", "7.316 trabalhos publicados"],
-  ["Remoção de entulho", "5.732 trabalhos publicados"],
-  ["Limpeza", "4.606 trabalhos publicados"],
-  ["Faz-tudo", "2.638 trabalhos publicados"],
+  ["Mudanças", "Transporte e ajuda para carregar"],
+  ["Remoção de entulho", "Retirada de volumes e descarte"],
+  ["Limpeza", "Casas, apartamentos e fim de contrato"],
+  ["Faz-tudo", "Pequenos reparos em casa"],
 ] as const;
 
-export type BrowseTask = {
-  slug: string;
-  title: string;
-  meta: string;
-  price: string;
-  offers: string;
-  details: string;
-};
-
-export const browseTasks: BrowseTask[] = [
-  {
-    slug: "suporte-online",
-    title: "Procuro ajuda com tarefas básicas de suporte online",
-    meta: "Remoto · Antes de qua., 21 de out.",
-    price: "$1,000",
-    offers: "Aberta",
-    details: "Tarefas básicas de suporte online, feitas à distância, antes de quarta-feira, 21 de outubro.",
-  },
-  {
-    slug: "livros-betty-neel",
-    title: "Ajuda para vender um lote de livros da Betty Neel",
-    meta: "Remoto · Flexível",
-    price: "$30",
-    offers: "Aberta",
-    details: "Preciso de ajuda para vender um lote de livros da Betty Neel. O prazo é flexível e o trabalho é remoto.",
-  },
-  {
-    slug: "conferir-mapa",
-    title: "Conferir um lugar no Google Maps",
-    meta: "Remoto · Flexível",
-    price: "$25",
-    offers: "Aberta · 3 propostas",
-    details: "Conferir um lugar no Google Maps. Trabalho remoto, com prazo flexível.",
-  },
-  {
-    slug: "trabalho-no-patio",
-    title: "Trabalho no pátio",
-    meta: "Oakton VA 22124, EUA · Flexível",
-    price: "$300",
-    offers: "Aberta · 1 proposta",
-    details: "Trabalho no pátio em Oakton VA 22124, EUA. O prazo é flexível.",
-  },
-  {
-    slug: "corte-de-grama",
-    title: "Corte de grama",
-    meta: "Alexandria VA 22312, EUA · Hoje",
-    price: "$400",
-    offers: "Aberta · 1 proposta",
-    details: "Corte de grama em Alexandria VA 22312, EUA. Preciso para hoje.",
-  },
-];
-
-export const railTasks: BrowseTask[] = [
-  {
-    slug: "consultoria-de-interiores",
-    title: "Consultoria de design de interiores (obra nova)",
-    meta: "Remoto · Flexível",
-    price: "$500",
-    offers: "Aberta · 1 proposta",
-    details: "Consultoria de design de interiores para uma obra nova. Remoto, com prazo flexível.",
-  },
-  {
-    slug: "contabilidade",
-    title: "Contabilidade",
-    meta: "Remoto · Flexível",
-    price: "$100",
-    offers: "Aberta · 8 propostas",
-    details: "Trabalho de contabilidade remoto, com prazo flexível.",
-  },
-  {
-    slug: "traducao-naati",
-    title: "Tradução NAATI",
-    meta: "Remoto · Hoje",
-    price: "$60",
-    offers: "Aberta",
-    details: "Tradução NAATI remota, para hoje.",
-  },
-];
-
-export const leaseTask = {
-  slug: "limpeza-fim-de-contrato",
-  title: "Limpeza de fim de contrato",
-  meta: "Kensington VIC, Austrália",
-  price: "$450",
-  offers: "Aberta · 1 proposta",
-  phone: "Townhouse pequena de dois quartos. Carpetes com limpeza a vapor. Só a parte interna.",
-  details:
-    "Olá, temos uma townhouse pequena de dois quartos em Kensington que precisa de limpeza de fim de contrato. Também precisamos de limpeza a vapor nos carpetes dos dois quartos e da escada. Só a parte interna. Não precisa da área externa.",
-};
-
-export const featuredJobs = [
-  { slug: "geladeira-media", title: "Buscar e entregar uma geladeira média", meta: "Entrega · Flexível", price: "$100", offers: "Aberta", details: "Buscar e entregar uma geladeira de tamanho médio." },
-  { slug: "colchao-king", title: "Busca e entrega de colchão king", meta: "Entrega · Flexível", price: "$85", offers: "Aberta", details: "Buscar e entregar um colchão king." },
-  { slug: "entrega-de-sofa", title: "Entrega de sofá", meta: "Entrega · Flexível", price: "$95", offers: "Aberta", details: "Entrega de um sofá." },
-  { slug: "mudanca-hoje", title: "Mudança HOJE", meta: "Mudanças · Hoje", price: "$60", offers: "Aberta", details: "Preciso de uma mudança para hoje." },
-  { slug: "mudanca-urgente", title: "Mudança urgente", meta: "Mudanças · Hoje", price: "$506", offers: "Aberta", details: "Mudança urgente." },
-  { slug: "ajuda-mudanca", title: "Ajuda para mudar de casa", meta: "Mudanças · Flexível", price: "$450", offers: "Aberta", details: "Ajuda para mudar de casa." },
-  { slug: "mudanca-1km", title: "Mudança a 1 km na mesma rua", meta: "Mudanças · Flexível", price: "$500", offers: "Aberta", details: "Mudança de cerca de 1 km na mesma rua." },
-];
-
-export function findTask(slug: string) {
-  if (slug === leaseTask.slug) return { kind: "lease" as const, task: leaseTask };
-  const browse = browseTasks.find((task) => task.slug === slug);
-  if (browse) return { kind: "browse" as const, task: browse };
-  const rail = railTasks.find((task) => task.slug === slug);
-  if (rail) return { kind: "rail" as const, task: rail };
-  const featured = featuredJobs.find((task) => task.slug === slug);
-  if (featured) return { kind: "featured" as const, task: featured };
-  return null;
-}
+export const browsePlace = "50 km São Paulo SP";
 
 export type Tasker = {
   slug: string;
@@ -215,35 +530,39 @@ export type Tasker = {
 };
 
 export const taskers: Tasker[] = [
-  { slug: "patrick-h", name: "Patrick H.", rating: "5,0", reviews: "670", place: "Ryde NSW 2112", body: "Instalação e desmontagem de trampolins Springfree" },
-  { slug: "stefan-b", name: "Stefan B.", rating: "5,0", reviews: "841", place: "Heidelberg Heights VIC", body: "Trabalho fantástico, muito bem feito" },
-  { slug: "john-l", name: "John L.", rating: "5,0", reviews: "756", place: "Elanora QLD", body: "Ótimo serviço! Eficiente, simpático e prestativo" },
-  { slug: "joshua-k", name: "Joshua K.", rating: "5,0", reviews: "722", place: "Durack QLD", body: "TV e eletrodomésticos, móveis" },
-  { slug: "philip-t", name: "Philip T.", rating: "5,0", reviews: "677", place: "Bridgeman Downs QLD", body: "PC, vídeo e áudio" },
-  { slug: "clint-h", name: "Clint H.", rating: "5,0", reviews: "575", place: "Marrickville NSW", body: "Móveis prontos, jardinagem, design gráfico" },
+  { slug: "marina-a", name: "Marina A.", rating: "4,9", reviews: "97", place: "Pinheiros, São Paulo", body: "Limpeza residencial e organização depois de mudança." },
+  { slug: "rafael-f", name: "Rafael F.", rating: "5,0", reviews: "64", place: "Moema, São Paulo", body: "Montagem de móveis prontos e pequenos reparos." },
+  { slug: "camila-s", name: "Camila S.", rating: "5,0", reviews: "41", place: "Tijuca, Rio de Janeiro", body: "Faxina e organização de apartamentos." },
+  { slug: "bruno-l", name: "Bruno L.", rating: "4,8", reviews: "33", place: "Savassi, Belo Horizonte", body: "Pintura interna e ajuda com jardinagem." },
+  { slug: "ana-p", name: "Ana P.", rating: "5,0", reviews: "28", place: "Vila Mariana, São Paulo", body: "Entregas e coletas no mesmo dia." },
+  { slug: "paulo-g", name: "Paulo G.", rating: "4,9", reviews: "22", place: "Centro, Curitiba", body: "Mudanças e planilhas simples." },
 ];
 
-export const katiReviews = [
-  ["Rob D.", "Serviço absolutamente impecável. Muito obrigado", "Limpeza de fim de contrato"],
-  ["Domenica G.", "Uma ótima equipe e um prazer de trabalhar junto", "Aspirar, passar pano e tirar pó da casa inteira e da varanda"],
-  ["Chelle B.", "Kati e a mãe dela fizeram um ótimo trabalho na minha limpeza de fim de contrato.", "Limpeza de fim de contrato"],
+export const sampleReviews = [
+  ["Roberta D.", "Serviço caprichado e no horário combinado.", "Limpeza de fim de contrato"],
+  ["Diego G.", "Equipe cuidadosa. Foi fácil combinar os detalhes.", "Limpeza da casa e da varanda"],
+  ["Cecília B.", "A limpeza de fim de contrato ficou pronta no mesmo dia.", "Limpeza de fim de contrato"],
 ];
 
 export const cities = [
-  ["sydney", "Sydney", "/sydney"],
-  ["melbourne", "Melbourne", "/locais/melbourne"],
-  ["brisbane", "Brisbane", "/locais/brisbane"],
-  ["perth", "Perth", "/locais/perth"],
-  ["adelaide", "Adelaide", "/locais/adelaide"],
-  ["canberra", "Canberra", "/locais/canberra"],
+  ["sao-paulo", "São Paulo", "/locais/sao-paulo"],
+  ["rio-de-janeiro", "Rio de Janeiro", "/locais/rio-de-janeiro"],
+  ["belo-horizonte", "Belo Horizonte", "/locais/belo-horizonte"],
+  ["curitiba", "Curitiba", "/locais/curitiba"],
+  ["porto-alegre", "Porto Alegre", "/locais/porto-alegre"],
+  ["brasilia", "Brasília", "/locais/brasilia"],
+  ["salvador", "Salvador", "/locais/salvador"],
+  ["recife", "Recife", "/locais/recife"],
 ] as const;
+
+export const legalLine = "Fechô";
 
 export const footerColumns: Array<[string, Array<[string, string]>]> = [
   [
     "Descubra",
     [
       ["Como funciona", "/como-funciona"],
-      ["FechoApp para empresas", "/empresas"],
+      ["Fechô para empresas", "/empresas"],
       ["Ganhe dinheiro", "/ganhar"],
       ["Calculadora de renda extra", "/calculadora"],
       ["Buscar trabalhos", "/trabalhos"],
@@ -282,10 +601,7 @@ export const footerColumns: Array<[string, Array<[string, string]>]> = [
       ["Todos os serviços", "/servicos"],
     ],
   ],
-  [
-    "Locais populares",
-    cities.map(([, name, href]) => [name, href] as [string, string]),
-  ],
+  ["Locais populares", cities.map(([, name, href]) => [name, href] as [string, string])],
 ];
 
 export const earningSkills = [

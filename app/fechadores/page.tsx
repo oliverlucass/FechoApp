@@ -6,7 +6,7 @@ import { taskers } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Encontrar Fechadores" };
 
-const filters = ["Categoria", "Sydney, NSW", "Selos", "Avaliação", "Idioma"];
+const filters = ["Categoria", "São Paulo, SP", "Selos", "Avaliação", "Idioma"];
 
 export default function TaskersPage() {
   return (
