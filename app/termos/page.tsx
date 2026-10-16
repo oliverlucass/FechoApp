@@ -7,7 +7,7 @@ export default function TermsPage() {
   return (
     <PageHero
       title="Termos e condições"
-      body="Apenas os títulos das seções: escopo dos serviços FechoApp, papel e obrigações, obrigações do usuário, taxas, pagamentos, créditos, meio de pagamento, verificação e selos."
+      body="Apenas os títulos das seções: escopo dos serviços Fechô, papel e obrigações, obrigações do usuário, taxas, pagamentos, créditos, meio de pagamento, verificação e selos."
     />
   );
 }

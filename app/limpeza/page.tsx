@@ -19,7 +19,6 @@ export default function CleaningPage() {
             <p className="mt-3 text-[16px]">
               Preencha um formulário curto e receba orçamentos grátis de um profissional de limpeza perto de você
             </p>
-            <p className="mt-2.5 text-fine">Ótima avaliação — 4,2/5 (mais de 11.114 avaliações)</p>
           </div>
           <div className="rounded-card bg-white p-[18px]">
             <h2 className="text-[20px] font-extrabold text-ink">

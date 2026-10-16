@@ -7,7 +7,7 @@ export default function PartnersPage() {
   return (
     <PageHero
       title="Dê mais escolha aos seus clientes"
-      body="Ao fazer parceria com o FechoApp, você oferece escolha e flexibilidade para montagem e instalação. A confiança de mais de 50 varejistas em toda a Austrália."
+      body="Ao fazer parceria com o Fechô, você oferece mais uma forma de montagem e instalação para os seus clientes no Brasil."
       action={{ href: "/ajuda", label: "Fale conosco" }}
     />
   );

@@ -57,7 +57,7 @@ export function AuthScreen({
         </div>
         {note ? (
           <p className="mt-3 text-fine">
-            Esta tela não envia seus dados. O FechoApp aqui é só a interface, sem servidor de login.
+            Esta tela não envia seus dados. O Fechô aqui é só a interface, sem servidor de login.
           </p>
         ) : null}
         <div className="mt-3">
@@ -90,7 +90,7 @@ export function AuthScreen({
           <Link href="/privacidade" className="underline">
             Política de privacidade
           </Link>{" "}
-          do FechoApp.
+          do Fechô.
         </p>
       </form>
     </div>

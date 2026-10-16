@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footerColumns } from "@/lib/content";
+import { footerColumns, legalLine } from "@/lib/content";
 
 export function Footer() {
   return (
@@ -16,7 +16,7 @@ export function Footer() {
           </div>
         ))}
       </div>
-      <div className="mt-[18px] text-[12px]">FechoApp Limited 2011-2026</div>
+      <div className="mt-[18px] text-[12px]">{legalLine}</div>
       <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[12px]">
         <Link href="/parceiros">Parceiros</Link>
         <Link href="/estudantes">Desconto estudantil</Link>

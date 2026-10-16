@@ -18,8 +18,8 @@ const barlowCondensed = Barlow_Condensed({
 
 export const metadata: Metadata = {
   title: {
-    default: "FechoApp",
-    template: "%s · FechoApp",
+    default: "Fechô",
+    template: "%s · Fechô",
   },
   description: "Publique qualquer tarefa. Escolha a melhor pessoa. Resolva.",
 };

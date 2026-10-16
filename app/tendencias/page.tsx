@@ -6,8 +6,8 @@ export const metadata: Metadata = { title: "Tendências" };
 export default function TrendsPage() {
   return (
     <PageHero
-      title="Explore os dados do marketplace FechoApp"
-      body="Mudanças, 16.646 tarefas publicadas. Mudança de móveis, 11.730. Limpeza, 11.653. Remoção de entulho, 9.279. Faz-tudo, 6.455."
+      title="Explore exemplos do marketplace Fechô"
+      body="Mudanças, móveis, limpeza, remoção de entulho e faz-tudo. Esta página não publica contagens reais."
     />
   );
 }

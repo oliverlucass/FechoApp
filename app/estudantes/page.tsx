@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Desconto estudantil" };
 export default function StudentsPage() {
   return (
     <PageHero
-      title="Desconto estudantil FechoApp"
+      title="Desconto estudantil Fechô"
       body="Verifique seu status de estudante na UNiDAYS para receber um código promocional e aplicá-lo quando atribuir sua tarefa."
       action={{ href: "/publicar", label: "Publicar uma tarefa" }}
     />

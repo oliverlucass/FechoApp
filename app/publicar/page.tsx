@@ -111,7 +111,7 @@ export default function PostPage() {
                     id="local"
                     value={place}
                     onChange={(event) => setPlace(event.target.value)}
-                    placeholder="ex.: Kensington VIC"
+                    placeholder="ex.: Pinheiros, São Paulo"
                     className="mt-2 h-auto rounded-[10px] border-0 bg-surface px-3.5 py-3.5"
                   />
                   <button
@@ -133,7 +133,7 @@ export default function PostPage() {
                     value={details}
                     onChange={(event) => setDetails(event.target.value)}
                     className="mt-2 min-h-32 w-full rounded-[10px] bg-surface px-3.5 py-3.5"
-                    placeholder="ex.: Townhouse de dois quartos, só a parte interna."
+                    placeholder="ex.: Apartamento de dois quartos, só a parte interna."
                   />
                 </>
               ) : null}
@@ -146,7 +146,7 @@ export default function PostPage() {
                     id="orcamento"
                     value={budget}
                     onChange={(event) => setBudget(event.target.value)}
-                    placeholder="$450"
+                    placeholder="R$ 450"
                     className="mt-2 h-auto rounded-[10px] border-0 bg-surface px-3.5 py-3.5"
                   />
                 </>

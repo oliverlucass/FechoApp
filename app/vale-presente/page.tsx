@@ -9,7 +9,7 @@ export default function GiftPage() {
   const [who, setWho] = useState<"eu" | "outro">("eu");
   const [design, setDesign] = useState(giftDesigns[0]);
   const [count, setCount] = useState(1);
-  const [amount, setAmount] = useState("$50");
+  const [amount, setAmount] = useState("R$ 100");
 
   return (
     <div className="min-h-screen bg-white">
@@ -18,13 +18,13 @@ export default function GiftPage() {
         <div className="flex-1" />
         <span className="rounded-full border border-action-edge bg-action px-3 py-2 text-on-action">Carrinho</span>
         <Link href="/" className="ml-3 text-link">
-          fechoapp.com →
+          Início →
         </Link>
       </header>
       <main className="grid gap-7 p-5 xl:grid-cols-2 xl:p-7">
         <div>
           <h1 className="text-[32px] leading-none font-extrabold text-ink xl:text-display">
-            Escolha seu vale-presente FechoApp
+            Escolha seu vale-presente Fechô
           </h1>
           <h2 className="mt-4 font-bold">Para quem você quer enviar este vale-presente?</h2>
           <div className="mt-2 flex gap-2">
@@ -81,7 +81,7 @@ export default function GiftPage() {
           </div>
         </div>
         <div className="flex min-h-[240px] flex-col items-center justify-center rounded-3xl bg-ink text-white">
-          <div className="text-[36px] font-extrabold">FechoApp</div>
+          <div className="font-heading text-[36px] font-extrabold">Fechô</div>
           <div>{design}</div>
         </div>
       </main>
