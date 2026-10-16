@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
+import { BrowseFilters } from "@/components/site/browse-filters";
 import { Header } from "@/components/site/header";
 import { TaskCard } from "@/components/site/task-card";
-import { browsePlace, browseTasks } from "@/lib/content";
+import { browseTasks } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Ver tarefas" };
-
-const filters = ["Categoria", browsePlace, "Qualquer preço", "Outros filtros", "Ordenar"];
 
 export default function BrowsePage() {
   return (
@@ -14,15 +13,8 @@ export default function BrowsePage() {
         <Header />
       </div>
       <main>
-        <div className="hidden items-center gap-2 px-4 py-2.5 xl:flex">
-          <span className="flex-1 rounded-search border border-line bg-white px-3 py-2 text-text">
-            Buscar uma tarefa
-          </span>
-          {filters.map((item) => (
-            <span key={item} className="rounded-chip border border-line bg-white px-2.5 py-2 text-fine">
-              {item}
-            </span>
-          ))}
+        <div className="hidden xl:block">
+          <BrowseFilters />
         </div>
         <div className="hidden grid-cols-[380px_1fr] gap-3 p-3 xl:grid">
           <div>
@@ -50,13 +42,12 @@ export default function BrowsePage() {
           </div>
         </div>
 
-        <div className="p-3 xl:hidden">
-          <h1 className="font-extrabold text-ink">Você está vendo tarefas</h1>
-          <div className="mt-2 rounded-search bg-white p-2.5">Buscar uma tarefa</div>
-          <div className="mt-2 text-[12px]">{browsePlace}</div>
-          <div className="mt-2">
+        <div className="xl:hidden">
+          <Header />
+          <BrowseFilters />
+          <div className="p-3">
             {browseTasks.map((task) => (
-              <TaskCard key={task.slug} href={`/tarefas/${task.slug}`} title={task.title} meta={task.meta} price={task.price} offers={task.offers} />
+              <TaskCard key={task.slug} href={`/tarefas/${task.slug}`} {...task} />
             ))}
           </div>
         </div>

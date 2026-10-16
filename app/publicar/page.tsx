@@ -90,7 +90,7 @@ export default function PostPage() {
                     value={title}
                     onChange={(event) => setTitle(event.target.value)}
                     placeholder="ex.: Ajuda para mudar meu sofá"
-                    className="mt-2 h-auto rounded-[10px] border-0 bg-surface px-3.5 py-3.5 text-text placeholder:text-disabled"
+                    className="mt-2"
                   />
                   <div className="mt-4 font-bold">Quando você precisa disso?</div>
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -118,7 +118,7 @@ export default function PostPage() {
                     value={place}
                     onChange={(event) => setPlace(event.target.value)}
                     placeholder="ex.: Pinheiros, São Paulo"
-                    className="mt-2 h-auto rounded-[10px] border-0 bg-surface px-3.5 py-3.5"
+                    className="mt-2"
                   />
                   <button
                     type="button"
@@ -153,7 +153,7 @@ export default function PostPage() {
                     value={budget}
                     onChange={(event) => setBudget(event.target.value)}
                     placeholder="R$ 450"
-                    className="mt-2 h-auto rounded-[10px] border-0 bg-surface px-3.5 py-3.5"
+                    className="mt-2"
                   />
                 </>
               ) : null}

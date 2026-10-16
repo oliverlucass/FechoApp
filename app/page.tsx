@@ -29,10 +29,10 @@ export default function HomePage() {
             Publique qualquer tarefa. Escolha a melhor pessoa. Resolva.
           </p>
           <div className="mt-3 flex flex-col items-stretch gap-2 xl:mt-4 xl:flex-row xl:justify-center xl:gap-3">
-            <Pill href="/publicar" block className="xl:w-auto">
+            <Pill href="/publicar" size="lg" block className="xl:w-auto">
               Publique sua tarefa grátis →
             </Pill>
-            <Pill href="/ganhar" tone="white" block className="xl:w-auto">
+            <Pill href="/ganhar" tone="white" size="lg" block className="xl:w-auto">
               Ganhe dinheiro como Fechador
             </Pill>
           </div>

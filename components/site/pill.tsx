@@ -10,9 +10,15 @@ const tones = {
   tint: "border-transparent bg-action-tint text-ink hover:bg-action-tint",
 } as const;
 
+const sizes = {
+  sm: "h-9 px-6 text-sm",
+  lg: "h-12 px-8 text-base",
+} as const;
+
 export function Pill({
   href,
   tone = "action",
+  size = "sm",
   block = false,
   children,
   className,
@@ -21,6 +27,7 @@ export function Pill({
 }: {
   href?: string;
   tone?: keyof typeof tones;
+  size?: keyof typeof sizes;
   block?: boolean;
   children: ReactNode;
   className?: string;
@@ -29,7 +36,8 @@ export function Pill({
 }) {
   const classes = cn(
     buttonVariants({ variant: "default", size: "lg" }),
-    "h-auto rounded-full px-[18px] py-[10px] text-center text-sm font-bold active:translate-y-0",
+    "rounded-full py-0 text-center font-bold tracking-[0.25px] active:translate-y-0",
+    sizes[size],
     tones[tone],
     block && "flex w-full",
     className,

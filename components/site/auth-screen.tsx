@@ -5,9 +5,10 @@ import Link from "next/link";
 import { Logo } from "@/components/site/logo";
 import { Pill } from "@/components/site/pill";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+
+const providers = ["Google", "Facebook", "Apple"];
 
 export function AuthScreen({
   title,
@@ -20,7 +21,6 @@ export function AuthScreen({
   alt: string;
   altHref: string;
 }) {
-  const [human, setHuman] = useState(false);
   const [note, setNote] = useState(false);
 
   return (
@@ -35,21 +35,11 @@ export function AuthScreen({
           setNote(true);
         }}
       >
-        <h1 className="text-center text-[28px] font-extrabold text-ink">{title}</h1>
-        <Label htmlFor="email" className="sr-only">
+        <h1 className="text-center font-heading text-[28px] font-extrabold text-ink">{title}</h1>
+        <Label htmlFor="email" className="mt-[18px] text-text">
           E-mail
         </Label>
-        <Input
-          id="email"
-          type="email"
-          required
-          placeholder="E-mail*"
-          className="mt-[18px] h-auto rounded-lg border-0 bg-surface px-3 py-3 text-text placeholder:text-text"
-        />
-        <label className="mt-2.5 flex items-center gap-2 rounded-lg bg-surface px-3 py-3">
-          <Checkbox checked={human} onCheckedChange={(checked) => setHuman(checked === true)} />
-          <span>Confirme que você é humano</span>
-        </label>
+        <Input id="email" type="email" required placeholder="voce@email.com" className="mt-1.5" />
         <div className="mt-3">
           <Pill type="submit" block>
             Continuar
@@ -67,27 +57,27 @@ export function AuthScreen({
           </Link>
         </div>
         <div className="my-3 text-center text-disabled">OU</div>
-        {["Continuar com Google", "Continuar com Facebook", "Continuar com Apple"].map((item) => (
+        {providers.map((item) => (
           <Button
             key={item}
             type="button"
             variant="outline"
-            className="mb-2 h-auto w-full rounded-full border-line bg-white py-2.5 font-semibold text-ink hover:bg-white"
+            className="mb-2 h-12 w-full rounded-full border-line bg-white font-semibold text-ink hover:bg-white"
           >
-            {item}
+            Continuar com {item}
           </Button>
         ))}
         <p className="mt-4 text-xs text-text">
           Ao continuar, concordo com os{" "}
-          <Link href="/termos" className="underline">
+          <Link href="/termos" className="text-link underline">
             Termos e condições
           </Link>
           , as{" "}
-          <Link href="/diretrizes" className="underline">
+          <Link href="/diretrizes" className="text-link underline">
             Diretrizes da comunidade
           </Link>{" "}
           e a{" "}
-          <Link href="/privacidade" className="underline">
+          <Link href="/privacidade" className="text-link underline">
             Política de privacidade
           </Link>{" "}
           do Fechô.
