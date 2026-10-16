@@ -66,7 +66,7 @@ export function HomeReviews() {
         {cards.map((card) => (
           <Link key={card.href} href={card.href} className="rounded-card border border-line bg-white p-4">
             <Image src={card.photo} alt="" width={56} height={56} unoptimized className="size-14 rounded-thumb" />
-            <div className="mt-3 text-caps font-bold tracking-[0.6px] text-muted uppercase">{card.kind}</div>
+            <div className="mt-3 text-caps font-bold tracking-caps text-muted uppercase">{card.kind}</div>
             <h3 className="mt-1 font-sans text-base font-bold text-ink">{card.title}</h3>
             <p className="mt-2 text-sm text-text">{card.review}</p>
             <p className="mt-1 text-sm text-muted">{card.name}</p>
