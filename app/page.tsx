@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Container } from "@/components/site/container";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { HeroArt } from "@/components/site/hero-art";
@@ -37,7 +38,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="grid gap-6 px-5 py-3 pb-7 xl:grid-cols-[0.8fr_1.2fr] xl:px-7">
+        <Container className="grid gap-6 py-3 pb-7 xl:grid-cols-[0.8fr_1.2fr]">
           <div>
             <h2 className="text-[32px] leading-none font-extrabold text-ink xl:text-display">
               Publique sua primeira tarefa em segundos
@@ -66,9 +67,9 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-        </section>
+        </Container>
 
-        <section className="px-5 pt-2 pb-7 xl:px-7">
+        <Container className="pt-2 pb-7">
           <h2 className="text-center text-[28px] font-extrabold text-ink xl:text-h1">
             Veja o que outras pessoas estão resolvendo
           </h2>
@@ -101,7 +102,7 @@ export default function HomePage() {
           <div className="mt-[18px] text-center">
             <Pill href="/publicar">Publique sua tarefa grátis</Pill>
           </div>
-        </section>
+        </Container>
       </main>
       <Footer />
     </div>

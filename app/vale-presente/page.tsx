@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Minus, Plus } from "lucide-react";
 import { Logo } from "@/components/site/logo";
 import { giftAmounts, giftDesigns } from "@/lib/content";
 
@@ -59,11 +60,11 @@ export default function GiftPage() {
           <h2 className="mt-4 font-bold">Quantos você precisa?</h2>
           <div className="mt-2 flex items-center gap-3 text-[16px]">
             <button type="button" aria-label="Diminuir" onClick={() => setCount((value) => Math.max(1, value - 1))}>
-              −
+              <Minus className="size-4" />
             </button>
             <span>{count}</span>
             <button type="button" aria-label="Aumentar" onClick={() => setCount((value) => value + 1)}>
-              +
+              <Plus className="size-4" />
             </button>
           </div>
           <h2 className="mt-4 font-bold">Qual o valor deste vale-presente?</h2>

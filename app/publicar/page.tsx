@@ -2,13 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { ChevronDown, X } from "lucide-react";
 import { Logo } from "@/components/site/logo";
 import { Pill } from "@/components/site/pill";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { postSteps } from "@/lib/content";
 
-const whenOptions = ["Em uma data ▾", "Antes de uma data ▾", "Estou flexível"];
+const whenOptions = [
+  { label: "Em uma data", chevron: true },
+  { label: "Antes de uma data", chevron: true },
+  { label: "Estou flexível", chevron: false },
+];
 
 export default function PostPage() {
   const [step, setStep] = useState(0);
@@ -34,8 +39,8 @@ export default function PostPage() {
         <div className="flex-1" />
         <Logo />
         <div className="flex-1 text-right">
-          <Link href="/" className="text-[22px] text-ink" aria-label="Fechar">
-            ×
+          <Link href="/" className="inline-flex text-ink" aria-label="Fechar">
+            <X className="size-6" />
           </Link>
         </div>
       </header>
@@ -91,12 +96,13 @@ export default function PostPage() {
                   <div className="mt-2 flex flex-wrap gap-2">
                     {whenOptions.map((item) => (
                       <button
-                        key={item}
+                        key={item.label}
                         type="button"
-                        onClick={() => setWhen(item)}
-                        className={`rounded-full border px-3.5 py-2 ${when === item ? "border-ink bg-ink text-white" : "border-ink text-ink"}`}
+                        onClick={() => setWhen(item.label)}
+                        className={`inline-flex items-center gap-1 rounded-full border px-3.5 py-2 ${when === item.label ? "border-ink bg-ink text-white" : "border-ink text-ink"}`}
                       >
-                        {item}
+                        {item.label}
+                        {item.chevron ? <ChevronDown className="size-4" /> : null}
                       </button>
                     ))}
                   </div>
