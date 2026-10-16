@@ -23,7 +23,7 @@ export default function GiftPage() {
       </header>
       <main className="grid gap-7 p-5 xl:grid-cols-2 xl:p-7">
         <div>
-          <h1 className="text-[32px] leading-none font-extrabold text-ink xl:text-[40px]">
+          <h1 className="text-[32px] leading-none font-extrabold text-ink xl:text-display">
             Escolha seu vale-presente FechoApp
           </h1>
           <h2 className="mt-4 font-bold">Para quem você quer enviar este vale-presente?</h2>
@@ -50,7 +50,7 @@ export default function GiftPage() {
                 key={tile}
                 type="button"
                 onClick={() => setDesign(tile)}
-                className="flex h-[52px] items-center justify-center rounded-lg border border-action-edge bg-action px-1 text-center text-[11px] font-bold text-on-action"
+                className="flex h-[52px] items-center justify-center rounded-lg border border-action-edge bg-action px-1 text-center text-caps font-bold text-on-action"
               >
                 {tile}
               </button>

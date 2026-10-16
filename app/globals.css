@@ -65,6 +65,7 @@
   --radius-card: 12px;
   --radius-search: 16px;
   --radius-pill: 9999px;
+  --radius-mark: 6px;
   --text-xs: 12px;
   --text-xs--line-height: 16px;
   --text-xs--letter-spacing: 0.25px;
@@ -78,6 +79,12 @@
   --text-lg--line-height: 24px;
   --text-h1: 36px;
   --text-h1--line-height: 40px;
+  --text-caps: 11px;
+  --text-caps--line-height: 16px;
+  --text-fine: 13px;
+  --text-fine--line-height: 18px;
+  --text-display: 40px;
+  --text-display--line-height: 44px;
   --tracking-label: 0.25px;
   --tracking-ui: 0.25px;
   --tracking-body: 0.15px;

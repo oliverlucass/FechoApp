@@ -9,7 +9,7 @@ export function Footer() {
           <div key={title}>
             <div className="mb-2 font-bold text-white">{title}</div>
             {links.map(([label, href]) => (
-              <Link key={label} href={href} className="mb-[5px] block text-[13px] hover:text-white">
+              <Link key={label} href={href} className="mb-[5px] block text-fine hover:text-white">
                 {label}
               </Link>
             ))}

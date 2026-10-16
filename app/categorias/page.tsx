@@ -20,7 +20,7 @@ export default function CategoriesPage() {
             onClick={() => setMode("fechador")}
             className={`mb-2 w-full rounded-chip p-2.5 text-left ${mode === "fechador" ? "border-l-[3px] border-indicator bg-action-tint" : "bg-surface"}`}
           >
-            <div className={`text-[11px] tracking-[0.4px] ${mode === "fechador" ? "font-bold text-link" : ""}`}>
+            <div className={`text-caps tracking-[0.4px] ${mode === "fechador" ? "font-bold text-link" : ""}`}>
               COMO FECHADOR
             </div>
             <div className={mode === "fechador" ? "font-bold text-ink" : ""}>Estou procurando trabalho em ...</div>
@@ -30,7 +30,7 @@ export default function CategoriesPage() {
             onClick={() => setMode("cliente")}
             className={`w-full rounded-chip p-2.5 text-left ${mode === "cliente" ? "border-l-[3px] border-indicator bg-action-tint" : "bg-surface"}`}
           >
-            <div className={`text-[11px] tracking-[0.4px] ${mode === "cliente" ? "font-bold text-link" : ""}`}>
+            <div className={`text-caps tracking-[0.4px] ${mode === "cliente" ? "font-bold text-link" : ""}`}>
               COMO CLIENTE
             </div>
             <div className={mode === "cliente" ? "font-bold text-ink" : ""}>Quero contratar alguém para ...</div>
@@ -43,7 +43,7 @@ export default function CategoriesPage() {
                 <Link
                   key={item}
                   href={item === "Limpeza" ? "/limpeza" : item === "Ver tudo" ? "/servicos" : "/servicos"}
-                  className={`block py-1 text-[13px] ${item === "Ver tudo" ? "font-bold text-link" : "font-medium text-ink"}`}
+                  className={`block py-1 text-fine ${item === "Ver tudo" ? "font-bold text-link" : "font-medium text-ink"}`}
                 >
                   {item}
                 </Link>

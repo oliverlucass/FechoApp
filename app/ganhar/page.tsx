@@ -12,7 +12,7 @@ export default function EarnPage() {
       <main>
         <section className="m-4 grid items-center gap-5 rounded-[28px] bg-ink p-7 text-white xl:grid-cols-[1.1fr_0.9fr] xl:p-9">
           <div>
-            <h1 className="text-[40px] font-extrabold xl:text-[52px]">Seja seu próprio chefe</h1>
+            <h1 className="text-display font-extrabold xl:text-[52px]">Seja seu próprio chefe</h1>
             <p className="mt-2.5 text-lg">Ganhe até $10.750 por mês no FechoApp*</p>
             <div className="mt-4">
               <Pill href="/cadastrar">

@@ -19,7 +19,7 @@ export default function BrowsePage() {
             Buscar uma tarefa
           </span>
           {filters.map((item) => (
-            <span key={item} className="rounded-chip border border-line bg-white px-2.5 py-2 text-[13px]">
+            <span key={item} className="rounded-chip border border-line bg-white px-2.5 py-2 text-fine">
               {item}
             </span>
           ))}
@@ -40,13 +40,13 @@ export default function BrowsePage() {
             ].map(([x, y], index) => (
               <div
                 key={index}
-                className="absolute flex size-[22px] items-center justify-center rounded-full bg-ink text-[11px] font-extrabold text-action"
+                className="absolute flex size-[22px] items-center justify-center rounded-full bg-ink text-caps font-extrabold text-action"
                 style={{ left: `${x}%`, top: `${y}%` }}
               >
                 A
               </div>
             ))}
-            <div className="absolute right-2.5 bottom-2.5 text-[11px]">MapLibre | OpenStreetMap</div>
+            <div className="absolute right-2.5 bottom-2.5 text-caps">MapLibre | OpenStreetMap</div>
           </div>
         </div>
 

@@ -68,7 +68,7 @@ export default function PostPage() {
                 {remote ? " · Remoto" : place ? ` · ${place}` : ""} · {budget || "sem orçamento"}
               </p>
               <p className="mt-2">{details}</p>
-              <p className="mt-3 text-[13px]">Nada foi enviado. Esta versão não tem servidor.</p>
+              <p className="mt-3 text-fine">Nada foi enviado. Esta versão não tem servidor.</p>
             </>
           ) : (
             <>

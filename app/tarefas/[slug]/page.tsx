@@ -56,7 +56,7 @@ export default async function TaskPage({ params }: { params: Promise<{ slug: str
             <div className="mt-2 flex items-start justify-between gap-4">
               <h1 className="text-[32px] font-extrabold text-ink">{task.title}</h1>
               <div className="rounded-card bg-surface p-3 text-center">
-                <div className="text-[11px]">ORÇAMENTO DA TAREFA</div>
+                <div className="text-caps">ORÇAMENTO DA TAREFA</div>
                 <div className="text-[28px] font-extrabold text-ink">{task.price}</div>
               </div>
             </div>

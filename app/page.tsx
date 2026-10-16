@@ -35,13 +35,13 @@ export default function HomePage() {
               Ganhe dinheiro como Fechador
             </Pill>
           </div>
-          <div className="mt-2.5 text-[12px] xl:mt-4 xl:flex xl:justify-center xl:gap-[22px] xl:text-[13px]">
+          <div className="mt-2.5 text-[12px] xl:mt-4 xl:flex xl:justify-center xl:gap-[22px] xl:text-fine">
             <span className="xl:hidden">1 mi+ clientes</span>
             <span className="hidden xl:inline">1 mi+ clientes</span>
             <span className="hidden xl:inline">2,5 mi+ tarefas feitas</span>
             <span className="hidden xl:inline">4 mi+ avaliações</span>
           </div>
-          <div className="mt-2 hidden text-[13px] text-action xl:block">
+          <div className="mt-2 hidden text-fine text-action xl:block">
             Trustpilot 4,0 Ótimo · 13.330 avaliações
           </div>
         </section>
@@ -66,7 +66,7 @@ export default function HomePage() {
 
         <section className="grid gap-6 px-5 py-3 pb-7 xl:grid-cols-[0.8fr_1.2fr] xl:px-7">
           <div>
-            <h2 className="text-[32px] leading-none font-extrabold text-ink xl:text-[40px]">
+            <h2 className="text-[32px] leading-none font-extrabold text-ink xl:text-display">
               Publique sua primeira tarefa em segundos
             </h2>
             <p className="mt-3 text-[16px]">Economize horas e conclua sua lista de tarefas</p>
@@ -116,7 +116,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {homeJobs.map(([kind, title, price, href]) => (
               <Link key={title} href={href} className="min-h-[120px] rounded-card bg-surface p-3.5">
-                <div className="text-[11px] tracking-[0.6px]">{kind}</div>
+                <div className="text-caps tracking-[0.6px]">{kind}</div>
                 <div className="mt-1 font-extrabold text-ink">{title}</div>
                 <div className="mt-4 flex items-center justify-between">
                   <span className="text-xs text-ink">5 estrelas</span>

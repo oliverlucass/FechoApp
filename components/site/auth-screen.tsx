@@ -56,7 +56,7 @@ export function AuthScreen({
           </Pill>
         </div>
         {note ? (
-          <p className="mt-3 text-[13px]">
+          <p className="mt-3 text-fine">
             Esta tela não envia seus dados. O FechoApp aqui é só a interface, sem servidor de login.
           </p>
         ) : null}
