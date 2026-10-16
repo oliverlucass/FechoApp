@@ -12,7 +12,7 @@ export function Logo({ className = "" }: { className?: string }) {
       )}
     >
       Fech
-      <span className="ml-px rounded-[6px] bg-action px-1.5 text-on-action">ô</span>
+      <span className="ml-px rounded-mark bg-action px-1.5 text-on-action">ô</span>
     </Link>
   );
 }
