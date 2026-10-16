@@ -1,0 +1,136 @@
+import Link from "next/link";
+import { Footer } from "@/components/site/footer";
+import { Header } from "@/components/site/header";
+import { HeroArt } from "@/components/site/hero-art";
+import { Pill } from "@/components/site/pill";
+import { categories, homeJobs, homeTabs } from "@/lib/content";
+
+const steps = [
+  "Descreva o que você precisa",
+  "Defina seu orçamento",
+  "Receba orçamentos e escolha o melhor Fechador",
+];
+
+export default function HomePage() {
+  return (
+    <div className="bg-white">
+      <Header />
+      <main>
+        <section className="m-3 rounded-[22px] bg-[#061257] px-[18px] py-[18px] text-center text-white xl:m-4 xl:rounded-[28px] xl:px-7 xl:pt-9 xl:pb-7">
+          <div className="xl:flex xl:items-center xl:justify-between">
+            <HeroArt />
+            <h1 className="text-[28px] leading-[0.95] font-extrabold tracking-[-0.8px] xl:max-w-[720px] xl:text-[46px] xl:leading-[0.92] xl:tracking-[-1.2px] xl:whitespace-nowrap">
+              RESOLVA QUALQUER COISA
+            </h1>
+            <HeroArt />
+          </div>
+          <p className="mt-2.5 text-[16px] xl:mt-[18px] xl:text-[18px]">
+            Publique qualquer tarefa. Escolha a melhor pessoa. Resolva.
+          </p>
+          <div className="mt-3 flex flex-col items-stretch gap-2 xl:mt-4 xl:flex-row xl:justify-center xl:gap-3">
+            <Pill href="/publicar" block className="xl:w-auto">
+              Publique sua tarefa grátis →
+            </Pill>
+            <Pill href="/ganhar" tone="white" block className="xl:w-auto">
+              Ganhe dinheiro como Fechador
+            </Pill>
+          </div>
+          <div className="mt-2.5 text-[12px] xl:mt-4 xl:flex xl:justify-center xl:gap-[22px] xl:text-[13px]">
+            <span className="xl:hidden">1 mi+ clientes</span>
+            <span className="hidden xl:inline">1 mi+ clientes</span>
+            <span className="hidden xl:inline">2,5 mi+ tarefas feitas</span>
+            <span className="hidden xl:inline">4 mi+ avaliações</span>
+          </div>
+          <div className="mt-2 hidden text-[13px] text-[#F5A524] xl:block">
+            Trustpilot 4,0 Ótimo · 13.330 avaliações
+          </div>
+        </section>
+
+        <section id="assinatura" className="mx-3 mb-5 rounded-[18px] bg-[#DDF88F] p-4 xl:mx-4 xl:mb-5 xl:flex xl:items-center xl:gap-[18px] xl:rounded-[20px] xl:px-[22px] xl:py-[18px]">
+          <div className="xl:flex-1">
+            <div className="font-extrabold text-[#0A65FC]">Assinatura FechoApp</div>
+            <div className="text-[22px] font-extrabold tracking-[-0.4px] text-[#061257] xl:text-[28px]">
+              Taxa de conexão $0 o ano inteiro.
+            </div>
+            <div className="mt-2.5">
+              <Pill href="#assinatura">Assinar agora →</Pill>
+            </div>
+            <div className="mt-2 hidden text-[12px] text-[#061257] xl:block">
+              Assinatura $89/ano. Termos se aplicam.
+            </div>
+          </div>
+          <div className="mt-4 hidden h-[90px] w-[180px] items-center justify-center rounded-xl bg-[#061257] font-extrabold text-[#DDF88F] xl:flex">
+            MEMBRO FECHOAPP
+          </div>
+        </section>
+
+        <section className="grid gap-6 px-5 py-3 pb-7 xl:grid-cols-[0.8fr_1.2fr] xl:px-7">
+          <div>
+            <h2 className="text-[32px] leading-none font-extrabold tracking-[-0.8px] text-[#061257] xl:text-[40px]">
+              Publique sua primeira tarefa em segundos
+            </h2>
+            <p className="mt-3 text-[16px]">Economize horas e conclua sua lista de tarefas</p>
+            {steps.map((step, index) => (
+              <div key={step} className="mt-3 flex items-center gap-2.5">
+                <span className="inline-flex size-[26px] items-center justify-center rounded-full border-2 border-[#0A65FC] font-bold text-[#0A65FC]">
+                  {index + 1}
+                </span>
+                <span>{step}</span>
+              </div>
+            ))}
+            <div className="mt-4">
+              <Pill href="/publicar">Publicar sua tarefa</Pill>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-2.5 rounded-3xl bg-[#EEF3FF] p-4 sm:grid-cols-2">
+            {categories.map(([title, body]) => (
+              <Link key={title} href={title === "Limpeza residencial" ? "/limpeza" : "/categorias"} className="flex gap-2.5 rounded-[14px] bg-white p-3">
+                <div className="size-[54px] shrink-0 rounded-[10px] bg-[#F3F3F7]" />
+                <div>
+                  <div className="font-extrabold text-[#061257]">{title}</div>
+                  <div className="text-[12px]">{body}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="px-5 pt-2 pb-7 xl:px-7">
+          <h2 className="text-center text-[28px] font-extrabold text-[#061257] xl:text-[36px]">
+            Veja o que outras pessoas estão resolvendo
+          </h2>
+          <div className="my-3.5 flex flex-wrap justify-center gap-x-[18px] gap-y-2">
+            {homeTabs.map((tab, index) => (
+              <span
+                key={tab}
+                className={
+                  index === 0
+                    ? "border-b-2 border-[#0A65FC] pb-1.5 font-bold text-[#0A65FC]"
+                    : "font-medium text-[#384179]"
+                }
+              >
+                {tab}
+              </span>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            {homeJobs.map(([kind, title, price, href]) => (
+              <Link key={title} href={href} className="min-h-[120px] rounded-2xl bg-[#F7F8FC] p-3.5">
+                <div className="text-[11px] tracking-[0.6px]">{kind}</div>
+                <div className="mt-1 font-extrabold text-[#061257]">{title}</div>
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-[12px] text-[#F5A524]">5 estrelas</span>
+                  <span className="font-extrabold text-[#061257]">{price}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-[18px] text-center">
+            <Pill href="/publicar">Publique sua tarefa grátis</Pill>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+}
